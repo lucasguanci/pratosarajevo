@@ -1,0 +1,344 @@
+/**
+ * colors
+ */
+@magenta: rgb(200,0,100); /*rgb(230,0,115);*/
+@light-gray: rgb(245,245,245);
+@gray-magenta: rgb(92,65,74); //rgb(130,115,120);
+@black-footer: rgb(33,33,33);
+
+/**
+ * Fonts
+ */
+strong, b {
+  font-weight: bold;
+}
+em, i {
+  font-style: italic;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', Arial, sans-serif;
+  font-weight: bold;
+}
+
+/**
+ * Mixins
+ */
+.shadow(@alfa: 0.8) {
+  -webkit-box-shadow: inset 0px 8px 8px -6px rgba(0, 0, 0, @alfa);
+  -moz-box-shadow: inset 0px 8px 8px -6px rgba(0, 0, 0, @alfa);
+  box-shadow: inset 0px 8px 8px -6px rgba(0, 0, 0, @alfa);
+}
+.outer-shadow(@alfa: 0.8) {
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(31, 31, 31, @alfa);
+  -moz-box-shadow:    0px 5px 5px 0px rgba(31, 31, 31, @alfa);
+  box-shadow:         0px 5px 5px 0px rgba(31, 31, 31, @alfa);
+}
+.text-shadow(@alfa: 1) {
+  text-shadow: 2px 2px 3px rgba(33, 33, 33, @alfa);
+}
+
+/**
+ * General
+ */
+hr { border-bottom: 1px dotted rgb(128,128,128); }
+
+/**
+ * Body 
+ */
+body {
+  font-family: 'Lato', Arial, sans-serif;
+  background-color: white;
+  line-height: 1.25em;
+}
+
+/**
+ * Navbar
+ */
+.navbar-default .navbar-link {
+  color: rgb(70,70,70);
+  margin-bottom: 0;
+}
+
+/**
+ * Navbar
+ */
+.navbar {
+  color: rgb(51,51,51);
+  background-color: rgba(255,255,255,1);
+  border-top: @magenta solid 1.5em;
+  .outer-shadow;
+}
+.navbar-brand {
+  padding: 7px 15px;
+}
+p.navbar-text {
+  color: rgb(0,0,0);
+  margin-top: 0;
+  margin-bottom: 0;
+  margin: 0;
+}
+p.navbar-text.social {
+  font-size: 90%;
+  margin-top: 0;
+  margin-bottom: 7px;
+  a {
+    color: rgb(115,115,115);    
+  }
+}
+@media screen and (min-width: 768px) {
+  p.navbar-text.social {
+    margin-top: 44px; // con menu
+    //margin-top: 75px; // senza menu
+    float: right;
+  }
+}
+p.navbar-text.menu {
+  clear: right;
+  a {
+    color: @magenta;
+    &:hover {
+      color: black;
+    };
+  }
+}
+.menu-item {
+  color: rgb(51,51,51);
+  color: @magenta;
+}
+.menu-item::after {
+  content: "  |  " ;
+  color: rgb(200,200,200);
+}
+.menu-item.last::after {
+  content: "" ;
+}
+#banner {
+  .shadow;  
+}
+
+/**
+ * Carousel
+**/
+div.carousel {
+  margin-top: 9.5em;
+  .shadow;
+}
+@media screen and (min-width: 768px) {
+  div.carousel {
+    margin-top: 8em;
+  }
+}
+.carousel-control {
+  display: none;
+}
+.carousel-inner {
+  img {
+    width: 100%;
+  }
+  div.carousel-caption {
+    text-align: left;
+    margin-left: -5%;
+    h3 {
+      font-size: 200%;
+      font-family: 'LatoBold', Arial, sans-serif;
+    }
+    p {
+      font-size: 125%;
+      font-family: 'LatoRegular', Arial, sans-serif;      
+    }    
+  }
+}
+div#news-slider {
+  ol.carousel-indicators {
+    bottom: 2%;
+  }
+  div.carousel-caption {
+    font-size: 100%;
+    font-family: 'LatoRegular', Arial, sans-serif;      
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    left: 4%;
+    bottom: 12%;
+  }
+}
+/**
+  * cross-fade effect 
+  * see https://coderwall.com/p/w4k7sw
+**/
+.carousel .item { -webkit-transition: .7s ease-in-out opacity; -moz-transition: .7s ease-in-out opacity; -ms-transition: .7s ease-in-out opacity; -o-transition: .7s ease-in-out opacity; transition: .7s ease-in-out opacity; left: 0 !important; }
+.carousel .active.left, .carousel .active.right { opacity: 0; z-index: 2; }
+
+
+/**
+ * Claim
+**/
+section#claim {
+  .shadow;
+  background-color: @magenta;
+  padding: 1em 0;
+  color: white;
+  h1, h2 {
+    font-style: italic;
+  }
+  div.claim {
+    padding: 0.5em 15px;
+  }
+  p.title {
+    .text-shadow;
+    font-size: 170%;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+  p.subtitle {
+    .text-shadow;
+    font-size: 110%;
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+@media screen and (max-width: 992px) {
+  section#claim {
+    line-height: 2em;
+  }
+}
+/**
+ * Content
+**/
+section#content {
+  background-color: @light-gray;
+  padding: 1em 0;
+  min-height: 20em;
+  h2 {
+    color: @magenta;
+    margin: 1em 0 0.5em 0;
+    font-size: 110%;
+    line-height: 0.911111em;
+  }
+  p {
+    margin: 1em 0;
+  }
+  div.sidebar {
+    margin-top: 2.5em;
+  }
+  ul#menu-artisti {
+    a {
+      color: black;
+      text-decoration: none;
+      &:hover {
+        color: @magenta;
+      };
+    }
+  }
+  div#artisti-wrapper {
+    min-height: 30em;
+  }
+  div.amico, div.artista { display: none; }
+  div.artista.active { display:block; }
+  p.didascalia {
+    font-size: 90%;
+    color: rgb(90,90,90);
+    line-height: 1em;
+    width: 70%;
+  }
+  div.carousel.artisti {
+    margin-top: 0;
+    box-shadow: none;
+    div.carousel-inner {
+      width: auto !important;
+      img {
+        width: auto !important;
+      }
+    }
+    div.carousel-caption {
+      position: relative;
+      margin: 1em 0;
+      color: rgb(70,70,70);
+      text-shadow: none;
+      left: 0;
+      font-size: 90%;
+      line-height: 1em;
+      width: 70%;
+      padding: 0;
+      bottom: 0;
+    }
+  }
+}
+
+
+
+/**
+ * PS
+**/
+section#ps {
+  background-color: @gray-magenta;
+  padding: 1em 0 1.5em 0;
+  h2 {
+    color: white;
+    margin: 0.5em 0 0.5em 0;
+    a {
+      color: white;
+    }
+  }
+  div.spreaker {
+    padding: 0 10px;
+    width: 300px;
+    height: 169px;
+    background-color: @black-footer;
+    font-size: 90%;
+    img {
+      margin: 15px 0;
+    }
+    a, p {
+      color: white;
+    }
+    div.live {
+      text-transform: uppercase;
+      font-weight: bold;
+      color: white;
+    }
+  }
+  div.map-wrapper {
+    position: relative;
+    width: 300px;
+    height: 169px;
+    #map { 
+      position: absolute; top:0; bottom:0; width:100%; 
+    }
+    p.map-link {
+      a {
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        color: black;
+        padding: 1px 4px;
+        background-color: white;
+        font-size: 80%;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Footer
+**/
+footer#footer {
+  font-size: 90%;
+  background-color: @black-footer;
+  padding: 1em 0;
+  color: white;
+  a {
+    color: white;
+  }
+}
+
+
+/*p.navbar-text.menu,
+section#content div.content {
+  display: none;
+}
+*/
