@@ -3,25 +3,17 @@
 require 'lib/Slim/Slim.php';
 require 'lib/Predis/Autoloader.php';
 
-// $username = $r->get("aid:$aid:username");
-// $limmagini = $r->llen("aid:$aid:immagini");
-// for ( $i=0; $i<$limmagini; $i++ ) {
-//   $img[$i] = $r->lindex("aid:$aid:immagini",$i);
-//   echo $img[$i]."<br>";
-// }
-
 /* Slim */
-\Slim\Slim::registerAutoloader();
+Slim\Slim::registerAutoloader();
 $app = new Slim\Slim();
+
 /* Predis */
 Predis\Autoloader::register();
-// $r = new Predis\Client();
-// $aid = $r->get('global:nextArtistId');
 
 $app->get('/artists','getArtists');
 $app->get('/artists/:username','getArtist');
 // -- $app->get('/artists/:aid','getArtistByAid');
-// $app->post('/artists','addArtist');
+$app->post('/artists','addArtist');
 // $app->put('/artists/:id','updateArtist');
 // $app->delete('/artists/:id','deleteArtist');
 
@@ -29,7 +21,7 @@ $app->run();
 
 function getArtists() {  
   try {
-    redisConnect();
+    $r = redisConnect();
     $n = $r->get('global:nextArtistId');
     $aid = $r->get('global:nextArtistId');
     for ( $i=0; $i<$n; $i++ ) {
@@ -40,6 +32,28 @@ function getArtists() {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
+
+function addArtist() {
+  $request = Slim\Slim::getInstance()->request();
+  $artist = json_decode($request->getBody());
+  try {
+    $r = redisConnect();
+    $r->incr('global:nextUserId');
+    $uid = $r->get('global:nextUserId');
+    $r->set("uid:$uid:username",$artist->username);
+    $r->set("uid:$uid:nome",$artist->nome);
+    $r->set("uid:$uid:bio",$artist->bio);
+    $l = sizeof($artist->immagini);
+    for ( $i=0; $i<$l; $i++ ) {
+      $r->rpush("uid:$uid:immagini",$artist->immagini[$i]);
+      $r->rpush("uid:$uid:didascalie",$artist->didascalie[$i]);
+    }
+    echo json_encode($artist);    
+  } catch (Exception $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
 
 function getArtist($username) {
   try {
