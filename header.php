@@ -7,13 +7,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- PS -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" href="css/modernpics.css" />
     <link rel="stylesheet" href="css/font.css" />
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css">
     <!-- Less -->
     <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
     <!-- Mapbox -->

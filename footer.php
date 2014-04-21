@@ -92,19 +92,17 @@
   <!-- /templates -->
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="js/lib/jquery.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
+  <script src="js/lib/bootstrap.min.js"></script>
   <!-- Less -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
+  <script src="js/lib/less-1.7.0.js"></script>
   <!-- Mapbox -->
   <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
   <!-- Handlebars -->
-  <script src="js/handlebars-v1.3.0.js"></script>
+  <script src="js/lib/handlebars.js"></script>
   <!-- PS -->
-  <script src="js/jquery.flexslider.js"></script>
   <script type="text/javascript" src="http://static.spreaker.net/js/sdk_client.js"></script>
-
-  <script src="js/scripts.js"></script>
+  <script src="js/client.js"></script>
 </body>
 </html>
