@@ -1,0 +1,23 @@
+data = {"username": "banchelli", "nome": "Francesca Banchelli", "immagini": ["img-1", "img-2", "img-3"], "didascalie": ["didascalia-1", "didascalia-2", "didascalia-3"], "bio": "biografia banchelli"}
+
+$.ajax({
+  url: 'api.php/artists/'+model,
+  type: 'PUT',
+  // contentType: 'application/json',
+  // dataType: "json",
+  data: data,
+  success: function(data,textStatus,jqHXR) {
+    alert('db successfully updated');
+    console.log( 'PUT response:' );
+    console.dir( data );
+    console.log( textStatus );
+    console.dir( jqXHR );
+  },
+  error: function(jqHXR,textStatus,errorThrown) {
+    alert("error: "+textStatus);
+  }
+});
+
+curl -i -X PUT -H 'Content-Type: application/json' -d '{"username": "banchelli", "nome": "Francesca Banchelli", "immagini": ["img-1", "img-2", "img-3"], "didascalie": ["didascalia-1", "didascalia-2", "didascalia-3"], "bio": "biografia banchelli"}' http://ps.local/api.php/artists/banchelli
+
+

@@ -9,6 +9,12 @@ Handlebars.registerHelper("foreach",function(arr,options) {
         return options.fn(item);
     }).join('');
 });
+Handlebars.registerHelper('times', function(n, block) {
+    var accum = '';
+    for(var i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});
 
 $(document).ready(function(){
   var map = L.mapbox.map('map', 'brontoluke.hnlbg8n2')
@@ -61,9 +67,11 @@ $(document).ready(function(){
 function getArtist(artist) {
   $.getJSON('api.php/artists/'+artist,function(data) {
     // managing template
-    var source = $("#template-artisti").html();
-    var template = Handlebars.compile(source);
-    var html = template(data);
+    //var source = $("#template-artisti").html();
+    //var template = Handlebars.compile(source);
+    var nested = _.template( $("#template-artisti-nested").html() );
+    var template = _.template( $("#template-artisti").html() );
+    var html = template({data:data,nested:nested});
     $('#artisti-wrapper').empty().append(html);
     $('#carousel-'+data.username).carousel({
       interval: 3000

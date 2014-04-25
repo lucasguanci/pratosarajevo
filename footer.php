@@ -68,7 +68,7 @@
   <!-- /footer -->
 
   <!-- templates -->
-  <script id="template-artisti" type="text/x-handlebars-template">
+  <script id="template-artisti--old" type="text/x-handlebars-template">
     <div id="{{username}}" class="artista active">
       <h2>{{nome}} {{cognome}}</h2>
       <div id="carousel-{{username}}" class="carousel slide artisti" data-ride="carousel">
@@ -90,6 +90,32 @@
     </div>
   </script>
   <!-- /templates -->
+  <script type="text/template" id="template-artisti-nested">
+    <div class="item <% if (i==0) { %> active <% } %>">
+      <img src="<%= immagine %>">
+      <div class="carousel-caption">
+        <%= didascalia %>
+      </div>
+    </div>                          
+  </script>
+  
+  <script id="template-artisti" type="text/template">
+    <div id="<%= data.username %>" class="artista active">
+      <h2><%= data.nome %></h2>
+      <div id="carousel-<%=data.username%>" class="carousel slide artisti" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% for ( i=0; i<3; i++ ) { %>
+            <%= nested({i: i, immagine: data.immagini[i], didascalia: data.didascalie[i]}) %>
+          <% } %>
+        </div>
+      </div>
+      <p>
+        <%= data.bio %>
+      </p>
+    </div>
+  </script>
+
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/lib/jquery.js"></script>
@@ -101,6 +127,7 @@
   <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
   <!-- Handlebars -->
   <script src="js/lib/handlebars.js"></script>
+  <script src="js/lib/underscore.js"></script>
   <!-- PS -->
   <script type="text/javascript" src="http://static.spreaker.net/js/sdk_client.js"></script>
   <script src="js/client.js"></script>

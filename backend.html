@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Prato-Sarajevo art invasion</title>
+    <title>Prato-Sarajevo art invasion // admin</title>
     <!-- properly render unicode characters in IE -->
 <!--    <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- PS -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" href="css/modernpics.css" />
     <link rel="stylesheet" href="css/font.css" />
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css">
-    <!-- Less -->
-    <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
-    <!-- Mapbox -->
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet/less" type="text/css" href="css/backend.less" />
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- google webmaster -->
-    <meta name="google-site-verification" content="QyqDweOiAw7EmjgiRNALX4KevdywzW0u0-vFyW4A9zk" />
 <!--     <link rel="stylesheet" href="css/styles.css" />
  -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,21 +26,113 @@
   </head>
 <body>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- Less -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
-  <!-- Mapbox -->
-  <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
-  <!-- Handlebars -->
-  <script src="js/handlebars-v1.3.0.js"></script>
-  <!-- PS -->
-  <script src="js/jquery.flexslider.js"></script>
-  <script type="text/javascript" src="http://static.spreaker.net/js/sdk_client.js"></script>
+  <section id="backend-wrapper">
+    <div class="container">
+      <!-- content -->
+      <div class="row cs">
+        <div class="col-md-12">
+          <div id="content-wrapper"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script src="js/scripts.js"></script>
+  <!-- Underscore.js templates -->
+  <script id="tpl-backend" type="text/template">
+    <% _.each(this.ctype, function(type) { %>
+      <div class="panel-group ctype" id="accordion-<%= type.name %>">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion-<%= type.name %>" href="#<%= type.name %>">
+                <%= type.name %>
+              </a>
+            </h4>
+          </div>
+          <div id="<%= type.name %>" class="panel-collapse collapse in">
+            <div class="panel-body"></div>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </script>
+
+  <script id="tpl-show-ctype" type="text/template">
+    <div class="ctype-add-new">
+      <button type="button" class="btn btn-primary add" data-ctype="<%= ctype %>">add new</button>
+      <div class="cnt" data-model="new"></div>
+    </div>
+    <% _.each(items, function(model) { %>
+      <div class="ctype-item">
+        <div class="model">
+          <%= model %>
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn btn-primary edit" data-ctype="<%=ctype%>" data-model="<%=model%>">edit</button>
+          <button type="button" class="btn btn-primary remove" data-ctype="<%=ctype%>" data-model="<%=model%>">remove</button>
+        </div>
+        <div class="clear"></div>
+        <div class="cnt" data-model="<%=model%>"></div>
+      </div>
+    <% }) %>
+  </script>
+
+  <script id="tpl-add-edit-artisti" type="text/template">
+    <form class="backend" <% if (typeof(model)!=="undefined") { %> data-model="<%= model.username %>" <% } %> >
+      <!-- username -->
+      <label for="username">username</label>
+      <input type="text" class="form-control" name="username" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.username) !== "undefined" ) { %> value="<%= model.username %>" <% } %> />
+      <!-- nome -->
+      <label for="nome">nome</label>
+      <input type="text" class="form-control" name="nome" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.nome) !== "undefined" ) { %> value="<%= model.nome %>" <% } %> />
+      <!-- immagini_1 -->
+      <label for="immagini_1">immagini_1</label>
+      <input type="text" class="form-control immagini" name="immagini_1" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[0]) !== "undefined" ) { %> value="<%= model.immagini[0] %>" <% } %> />
+      <!-- immagini_2 -->
+      <label for="immagini_2">immagini_2</label>
+      <input type="text" class="form-control immagini" name="immagini_2" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[1]) !== "undefined" ) { %> value="<%= model.immagini[1] %>" <% } %> />
+      <!-- immagini_3 -->
+      <label for="immagini_3">immagini_3</label>
+      <input type="text" class="form-control immagini" name="immagini_3" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[2]) !== "undefined" ) { %> value="<%= model.immagini[2] %>" <% } %> />
+      <!-- didascalie_1 -->
+      <label for="didascalie_1">didascalie_1</label>
+      <input type="text" class="form-control didascalie" name="didascalie_1" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[0]) !== "undefined" ) { %> value="<%= model.didascalie[0] %>" <% } %> />
+      <!-- didascalie_2 -->
+      <label for="didascalie_2">didascalie_2</label>
+      <input type="text" class="form-control didascalie" name="didascalie_2" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[1]) !== "undefined" ) { %> value="<%= model.didascalie[1] %>" <% } %> />
+      <!-- didascalie_3 -->
+      <label for="didascalie_3">didascalie_3</label>
+      <input type="text" class="form-control didascalie" name="didascalie_3" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[2]) !== "undefined" ) { %> value="<%= model.didascalie[2] %>" <% } %> />
+      <!-- bio -->
+      <label for="bio">bio</label>
+      <textarea class="form-control" name="bio" rows="10">
+        <% if ( typeof(model)!=="undefined" && typeof(model.bio) !== "undefined" ) { %> 
+        <%= model.bio %> <% } %>
+      </textarea>
+      <!-- submit -->
+      <button type="submit" class="btn btn-primary">Invia</button>
+    </form>
+  </script>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/bootstrap.min.js"></script>
+  <script src="js/lib/underscore.js"></script>
+  <script src="js/lib/backbone.js"></script>
+  <script src="js/lib/modernizr.js"></script>
+  <script src="js/lib/less-1.7.0.js"></script>
+  <script src="js/lib/handlebars.js"></script>
+  <!-- Backbone -->
+  <script src="js/models/artist.js"></script>
+  <script src="js/models/post.js"></script>
+  <script src="js/collections/artists.js"></script>
+  <script src="js/collections/news.js"></script>
+  <script src="js/views/backend.js"></script>
+  <script src="js/views/ctype.js"></script>
+  <script src="js/views/addEdit.js"></script>
+  <script src="js/routers/router.js"></script>
+  <!-- app -->
+  <script src="js/backend.js"></script> 
 </body>
 </html>
 
