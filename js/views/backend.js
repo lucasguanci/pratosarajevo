@@ -38,23 +38,36 @@ var app = app || {};
     addEdit: function(e) {
       var ctype = $(e.target).attr('data-ctype');
       var model = $(e.target).attr('data-model');
-      var target = $('div.cnt[data-model="'+model+'"]');
-      if ( $(target).hasClass("active") ) {
-        $(target).removeClass("active").hide();
-      } else {
-        $('div.cnt.active').each(function(i, el) {
-          $(el).removeClass("active").hide();
-        });
-        $('div.cnt[data-model="'+model+'"]').addClass("active").show();        
-      }
       var self = this;
       if ( typeof(model)=="undefined" ) {
         // CREATE
+        var target = $('div.cnt[data-model="new"]');
+        if ( $(target).hasClass("active") ) {
+          target.removeClass("active").toggle();
+        } else {
+          target.addClass("active").toggle();
+        }
+        // if ( $(target).hasClass("active") ) {
+        //   $(textarearget).removeClass("active").hide();
+        // } else {
+        //   $('div.cnt[data-model="new"]').addClass("active").show();
+        // }
+        // display form
         subview = new app.addEditView();
         data = undefined;
-        self.$el.find('div.cnt[data-model="new"]').append(subview.render(ctype, data));        
+        self.$el.find('div.cnt[data-model="new"]').html(subview.render(ctype, data));        
       } else {
         // UPDATE
+        // hide active element and display selected
+        var target = $('div.cnt[data-model="'+model+'"]');
+        if ( $(target).hasClass("active") ) {
+          $(target).removeClass("active").hide();
+        } else {
+          $('div.cnt.active').each(function(i, el) {
+            $(el).removeClass("active").hide();
+          });
+          $('div.cnt[data-model="'+model+'"]').addClass("active").show();        
+        }
         // load and display model data
         $.getJSON('api.php/artists/'+model)
           .done(function(data) {
@@ -80,7 +93,7 @@ var app = app || {};
       });
       data.bio = $(e.target).find('textarea[name="bio"]').val();
       if ( typeof(model)!=="undefined" ) {
-        // update
+        // UPDATE
         $.ajax({
           url: 'api.php/artists/'+model,
           type: 'PUT',
@@ -100,13 +113,14 @@ var app = app || {};
           }
         });
       } else {
-        // create
+        // CREATE
         $.post('api.php/artists', JSON.stringify(data), function(data,textStatus,jqXHR) {
             alert('DB post.');
             console.log( 'POST response:' );
             console.dir( data );
             console.log( textStatus );
             console.dir( jqXHR );
+            $('div.cnt[data-model="new"]').removeClass("active").hide();
           }
         );
       }

@@ -66,15 +66,12 @@ $(document).ready(function(){
 
 function getArtist(artist) {
   $.getJSON('api.php/artists/'+artist,function(data) {
-    // managing template
-    //var source = $("#template-artisti").html();
-    //var template = Handlebars.compile(source);
     var nested = _.template( $("#template-artisti-nested").html() );
     var template = _.template( $("#template-artisti").html() );
     var html = template({data:data,nested:nested});
     $('#artisti-wrapper').empty().append(html);
     $('#carousel-'+data.username).carousel({
-      interval: 3000
+      interval: 4000
     })
   });
 }
