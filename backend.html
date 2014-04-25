@@ -96,13 +96,25 @@
       <input type="text" class="form-control immagini" name="immagini_3" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[2]) !== "undefined" ) { %> value="<%= model.immagini[2] %>" <% } %> />
       <!-- didascalie_1 -->
       <label for="didascalie_1">didascalie_1</label>
-      <input type="text" class="form-control didascalie" name="didascalie_1" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[0]) !== "undefined" ) { %> value="<%= model.didascalie[0] %>" <% } %> />
+      <textarea class="form-control didascalie" name="didascalie_1" rows="5">
+        <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[0]) !== "undefined" ) { %>
+          <%= model.didascalie[0] %>
+        <% } %>
+      </textarea/>
       <!-- didascalie_2 -->
       <label for="didascalie_2">didascalie_2</label>
-      <input type="text" class="form-control didascalie" name="didascalie_2" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[1]) !== "undefined" ) { %> value="<%= model.didascalie[1] %>" <% } %> />
+      <textarea class="form-control didascalie" name="didascalie_2" rows="5">
+        <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[1]) !== "undefined" ) { %>
+          <%= model.didascalie[1] %>
+        <% } %>
+      </textarea/>
       <!-- didascalie_3 -->
       <label for="didascalie_3">didascalie_3</label>
-      <input type="text" class="form-control didascalie" name="didascalie_3" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[2]) !== "undefined" ) { %> value="<%= model.didascalie[2] %>" <% } %> />
+      <textarea class="form-control didascalie" name="didascalie_3" rows="5">
+        <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[2]) !== "undefined" ) { %>
+          <%= model.didascalie[2] %>
+        <% } %>
+      </textarea/>
       <!-- bio -->
       <label for="bio">bio</label>
       <textarea class="form-control" name="bio" rows="10">

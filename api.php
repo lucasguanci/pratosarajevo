@@ -74,6 +74,7 @@ function addArtist() {
     $r = redisConnect();
     $r->incr('global:nextArtistId');
     $aid = $r->get('global:nextArtistId');
+    $r->set("username:$username:aid", $aid);
     $r->set("aid:$aid:username",$artist->username);
     $r->set("aid:$aid:nome",$artist->nome);
     $r->set("aid:$aid:bio",$artist->bio);

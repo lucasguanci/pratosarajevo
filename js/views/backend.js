@@ -75,7 +75,7 @@ var app = app || {};
         data.immagini.push($(item).val());
       });
       data.didascalie = [];
-      _.each($(e.target).find('input.didascalie'),function(item){
+      _.each($(e.target).find('textarea.didascalie'),function(item){
         data.didascalie.push($(item).val());
       });
       data.bio = $(e.target).find('textarea[name="bio"]').val();
@@ -88,7 +88,7 @@ var app = app || {};
           // dataType: "json",
           data: JSON.stringify(data),
           success: function(data,textStatus,jqXHR) {
-            alert('DB update.');
+            alert('DB updated.');
             console.log( 'PUT response:' );
             console.dir( data );
             console.log( textStatus );
