@@ -9,12 +9,11 @@ var app = app || {};
         {
           name: "artisti",
           url: "api.php/artists"
+        },
+        {
+          name: "news",
+          url: "api.php/news"
         }
-        // },
-        // {
-        //   name: "news",
-        //   url: "api.php/news"
-        // }
       ];     
       this.render();
     },
@@ -47,11 +46,6 @@ var app = app || {};
         } else {
           target.addClass("active").toggle();
         }
-        // if ( $(target).hasClass("active") ) {
-        //   $(textarearget).removeClass("active").hide();
-        // } else {
-        //   $('div.cnt[data-model="new"]').addClass("active").show();
-        // }
         // display form
         subview = new app.addEditView();
         data = undefined;
@@ -68,9 +62,16 @@ var app = app || {};
           });
           $('div.cnt[data-model="'+model+'"]').addClass("active").show();        
         }
+        // if ctype==news get proper model id, i.e. 1, 2, ..
+        if ( ctype=="news" ) {
+          model = model.split(/:/)[1];
+        }
         // load and display model data
-        $.getJSON('api.php/artists/'+model)
+        $.getJSON('api.php/'+ctype+'/'+model)
           .done(function(data) {
+            if ( ctype=="news" ) {
+              model = "post:"+model;
+            }            
             subview = new app.addEditView();
             self.$el.find('div.cnt[data-model="'+model+'"]').append(subview.render(ctype, data));
           });
@@ -78,24 +79,36 @@ var app = app || {};
     },
     submitForm: function(e) {
       e.preventDefault();
-      // check if CREATE or UPDATE
       model = $(e.target).attr('data-model');
+      ctype = $(e.target).attr('data-ctype');
       var data = {};
-      data.username = $(e.target).find('input[name="username"]').val();
-      data.nome = $(e.target).find('input[name="nome"]').val();
-      data.immagini = [];
-      _.each($(e.target).find('input.immagini'),function(item){
-        data.immagini.push($(item).val());
-      });
-      data.didascalie = [];
-      _.each($(e.target).find('textarea.didascalie'),function(item){
-        data.didascalie.push($(item).val());
-      });
-      data.bio = $(e.target).find('textarea[name="bio"]').val();
+      // switch between cases
+      switch (ctype) {
+        case "artisti":
+          data.username = $(e.target).find('input[name="username"]').val();
+          data.nome = $(e.target).find('input[name="nome"]').val();
+          data.immagini = [];
+          _.each($(e.target).find('input.immagini'),function(item){
+            data.immagini.push($(item).val());
+          });
+          data.didascalie = [];
+          _.each($(e.target).find('textarea.didascalie'),function(item){
+            data.didascalie.push($(item).val());
+          });
+          data.bio = $(e.target).find('textarea[name="bio"]').val();
+          break;
+        case "news":
+          data.data = moment().format();
+          data.titolo = $(e.target).find('input[name="titolo"]').val();
+          data.contenuto = $(e.target).find('textarea[name="contenuto"]').val();
+          data.immagine = $(e.target).find('input[name="immagine"]').val();
+          break;
+      }
+      // check if CREATE or UPDATE      
       if ( typeof(model)!=="undefined" ) {
         // UPDATE
         $.ajax({
-          url: 'api.php/artists/'+model,
+          url: 'api.php/'+ctype+'/'+model,
           type: 'PUT',
           // contentType: 'application/json',
           // dataType: "json",
@@ -114,7 +127,7 @@ var app = app || {};
         });
       } else {
         // CREATE
-        $.post('api.php/artists', JSON.stringify(data), function(data,textStatus,jqXHR) {
+        $.post('api.php/'+ctype, JSON.stringify(data), function(data,textStatus,jqXHR) {
             alert('DB post.');
             console.log( 'POST response:' );
             console.dir( data );

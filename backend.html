@@ -78,7 +78,7 @@
   </script>
 
   <script id="tpl-add-edit-artisti" type="text/template">
-    <form class="backend" <% if (typeof(model)!=="undefined") { %> data-model="<%= model.username %>" <% } %> >
+    <form class="backend <%= ctype %>" data-ctype="<%= ctype %>" <% if (typeof(model)!=="undefined") { %> data-model="<%= model.username %>" <% } %> >
       <!-- username -->
       <label for="username">username</label>
       <input type="text" class="form-control" name="username" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.username) !== "undefined" ) { %> value="<%= model.username %>" <% } %> />
@@ -126,6 +126,26 @@
     </form>
   </script>
 
+  <script id="tpl-add-edit-news" type="text/template">
+    <form class="backend" data-ctype="<%= ctype %>" <% if (typeof(model)!=="undefined") { %> data-model="<%= model.id %>" <% } %> >
+      <!-- titolo -->
+      <label for="titolo">titolo</label>
+      <input type="text" class="form-control" name="titolo" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.titolo) !== "undefined" ) { %> value="<%= model.titolo %>" <% } %> />
+      <!-- contenuto -->
+      <label for="contenuto">contenuto</label>
+      <textarea class="form-control" name="contenuto" rows="10">
+        <% if ( typeof(model)!=="undefined" && typeof(model.contenuto) !== "undefined" ) { %> 
+        <%= model.contenuto %> <% } %>
+      </textarea>
+      <!-- immagine -->
+      <label for="immagine">immagine</label>
+      <input type="text" class="form-control" name="immagine" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagine) !== "undefined" ) { %> value="<%= model.immagine %>" <% } %> />
+      <!-- submit -->
+      <button type="submit" class="btn btn-primary">Invia</button>
+    </form>
+  </script>
+
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/lib/jquery.js"></script>
   <script src="js/lib/bootstrap.min.js"></script>
@@ -134,6 +154,7 @@
   <script src="js/lib/modernizr.js"></script>
   <script src="js/lib/less-1.7.0.js"></script>
   <script src="js/lib/handlebars.js"></script>
+  <script src="js/lib/moment.js"></script>
   <!-- Backbone -->
   <script src="js/models/artist.js"></script>
   <script src="js/models/post.js"></script>

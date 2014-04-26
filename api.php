@@ -10,6 +10,7 @@ $app = new Slim\Slim();
 /* Predis */
 Predis\Autoloader::register();
 
+/* Artists */
 $app->get('/artists','getArtists');
 $app->get('/artists/:username','getArtist');
 // -- $app->get('/artists/:aid','getArtistByAid');
@@ -17,8 +18,19 @@ $app->post('/artists','addArtist');
 $app->put('/artists/:username','updateArtist');
 // $app->delete('/artists/:id','deleteArtist');
 
+/* News */
+$app->get('/news','getNews');
+$app->get('/news/:id','getPost');
+$app->post('/news','addPost');
+$app->put('/news/:id','updatePost');
+$app->delete('/news/:id','deletePost');
+
 $app->run();
 
+
+/**
+ * artists API
+ */
 // GET /artists
 function getArtists() {  
   try {
@@ -90,19 +102,10 @@ function addArtist() {
   }
 }
 
-
-//updateArtist("banchelli");
-
 // PUT /artists/:username
 function updateArtist($username) {
   $request = Slim\Slim::getInstance()->request();
   $artist = json_decode($request->getBody());
-  //  $data = '{"username": "banchelli", "nome": "Francesca Banchelli", "immagini": ["img-1", "img-2", "img-3"], "didascalie": ["didascalia-1", "didascalia-2", "didascalia-3"], "bio": "biografia banchelli"}';
-  //  echo "encoded: $data<br>";
-  // $artist = json_decode($data);
-  // var_dump($artist);
-  // echo "username: $artist->username<br>";
-  // echo "img[2]: ".$artist->immagini[1]."<br>";
   try {
     $r = redisConnect();
     $aid = $r->get("username:$username:aid");
@@ -128,6 +131,100 @@ function updateArtist($username) {
   }
 }
 
+/**
+ * news API
+ */
+// GET /news
+function getNews() {  
+  try {
+    $r = redisConnect();
+    // number of news
+    $N = 4;
+    $news = $r->lrange("news",0,$N-1);
+    //header('Content-type: application/json');
+    echo json_encode($news);
+  } catch (Exception $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function getPost($id) {
+  try {
+    $r = redisConnect();
+    $post = array(
+      "id" => $r->hget("post:$id","id"),
+      "data" => $r->hget("post:$id","data"),
+      "titolo" => $r->hget("post:$id","titolo"),
+      "contenuto" => $r->hget("post:$id","contenuto"),
+      "immagine" => $r->hget("post:$id","immagine")
+    );
+    header('Content-type: application/json');
+    echo json_encode($post);  
+  } catch (Exception $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+// POST /news
+function addPost() {
+  $request = Slim\Slim::getInstance()->request();
+  $post = json_decode($request->getBody());
+  try {
+    $r = redisConnect();
+    $r->incr('global:nextPostId');
+    $id = $r->get("global:nextPostId");
+    $r->hmset("post:$id", array(
+      "id" => $id,
+      "data" => $post->data,
+      "titolo" => $post->titolo,
+      "contenuto" => $post->contenuto,
+      "immagine" => $post->immagine
+      )
+    );
+    $r->lpush("news","post:$id");
+    echo json_encode($post);    
+  } catch (Exception $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+// UPDATE /news/:id
+function updatePost($id) {
+  $request = Slim\Slim::getInstance()->request();
+  $post = json_decode($request->getBody());
+  try {
+    $r = redisConnect();
+    $r->hmset("post:$id", array(
+      "id" => $id,
+      "data" => $post->data,
+      "titolo" => $post->titolo,
+      "contenuto" => $post->contenuto,
+      "immagine" => $post->immagine
+      )
+    );
+    echo json_encode($post);    
+  } catch (Exception $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+// DELETE /news/:id
+function deletePost($id) {
+  $request = Slim\Slim::getInstance()->request();
+  $post = json_decode($request->getBody());
+  try {
+    $r = redisConnect();
+    $r->del("post:$id");
+    echo '{"success":"deleted post post:$id"}';    
+  } catch (Exception $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+
+/**
+ * DB Connection
+ */
 // Connect to Redis 
 function redisConnect() {
   // redis to go

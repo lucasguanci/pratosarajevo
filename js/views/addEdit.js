@@ -6,10 +6,12 @@ var app = app || {};
       switch ( ctype ) {
         case "artisti":
           tpl = _.template($('#tpl-add-edit-artisti').html());
-          this.$el.html( tpl({model: data}));
+          this.$el.html( tpl({model: data, ctype: ctype}));
           return this.$el;
         case "news":
-          break;
+          tpl = _.template($('#tpl-add-edit-news').html());
+          this.$el.html( tpl({model: data, ctype: ctype}));
+          return this.$el;
         default:
           console.log("switch->default");
       }
