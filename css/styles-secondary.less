@@ -4,6 +4,7 @@
 @magenta: rgb(200,0,100); /*rgb(230,0,115);*/
 @light-gray: rgb(245,245,245);
 @medium-gray: rgb(240,240,240);
+@gray-medium: rgb(128,128,128);
 @gray: rgb(70,70,70);
 @gray-magenta: rgb(92,65,74); //rgb(130,115,120);
 @black-footer: rgb(33,33,33);
@@ -63,6 +64,21 @@ section#content {
       &:hover {
         border-bottom: none;
       };
+    }
+    div.contatti {
+      strong {
+        color: @gray-medium;
+        font-weight: normal;
+      }
+    }
+    div.spreaker {
+      h4 {
+        color: @magenta;
+        margin-bottom: 0.5em;
+      }
+      p.website {
+        margin-bottom: 2em;
+      }
     }
   }
 }

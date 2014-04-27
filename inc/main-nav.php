@@ -18,7 +18,7 @@
         <div class="container wrapper">
           <div class="row">
             <div class="col-md-12">
-              <p class="title">Prato-Sarjevo ART INVASION</p>
+              <p class="title">Prato-Sarajevo ART INVASION</p>
               <p class="subtitle">Progetto di residenza per giovani artisti residenti in Toscana e Bosnia - Prato / aprile - giugno 2014</p>
             </div>
           </div>
@@ -38,7 +38,7 @@
             </div>
             <p class="navbar-text navbar-right social">
               <i class="fa fa-facebook"></i>&nbsp;
-              <a href="https://www.facebook.com/pages/Prato-Sarajevo-art-invasion/729262233761486" target="_blank" class="navbar-link">facebook</a>
+              <a href="https://www.facebook.com/pratosarajevoartinvasion" target="_blank" class="navbar-link">facebook</a>
               &nbsp;
               <i class="fa fa-twitter"></i>&nbsp;
               <a href="https://twitter.com/search?q=from%3Apratosarajevo&src=typd" class="navbar-link">twitter</a>
@@ -47,13 +47,15 @@
               <span class="menu-item">
                 <a href="progetto.php">Progetto</a>
               </span>
+              <span class="menu-item">Programma</span>
               <span class="menu-item">
                 <a href="artisti.php">Artisti</a>
               </span>
-              <span class="menu-item">Programma</span>
-              <span class="menu-item">Archivio News</span>
-              <span class="menu-item">Press Release</span>
-              <span class="menu-item last">Contatti</span>
+              <span class="menu-item">News e Eventi</span>
+              <!-- <span class="menu-item">Rassegna stampa</span> -->
+              <span class="menu-item last">
+                <a href="contatti.php">Contatti</a>
+              </span>
             </p>
           </div>
         </div>

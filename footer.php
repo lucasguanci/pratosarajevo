@@ -12,10 +12,11 @@
           <div class="spreaker">
             <img src="images/logo-spreaker.png" alt="logo Spreaker.com">
             <p class="spreaker-intro">
-              Segui il canale Spreaker di<br>
-              <a href="http://www.spreaker.com/user/mediaps2014">
-                Prato-Sarajevo ART INVASION
-              </a>
+              <a class="spreaker" href="spreaker.php">
+                Radio Prato-Sarajevo ART INVASION
+              </a><br>
+              La diretta, i podcast, il programma completo delle trasmissioni.
+              <br>
             </p>
             <ul class="podcast-list"></ul>
             <div class="live"></div>

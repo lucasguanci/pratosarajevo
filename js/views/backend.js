@@ -7,7 +7,7 @@ var app = app || {};
     initialize: function() {
       this.ctype = [
         {
-          name: "artisti",
+          name: "artists",
           url: "api.php/artists"
         },
         {
@@ -84,7 +84,7 @@ var app = app || {};
       var data = {};
       // switch between cases
       switch (ctype) {
-        case "artisti":
+        case "artists":
           data.username = $(e.target).find('input[name="username"]').val();
           data.nome = $(e.target).find('input[name="nome"]').val();
           data.immagini = [];
