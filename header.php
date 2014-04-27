@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="css/font.css" />
-    <!-- Less -->
     <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
     <!-- Mapbox -->
     <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
@@ -79,7 +78,9 @@
               <a href="https://twitter.com/search?q=from%3Apratosarajevo&src=typd" class="navbar-link">twitter</a>
             </p>
             <p class="navbar-text navbar-right menu">
-              <span class="menu-item">Progetto</span>
+              <span class="menu-item">
+                <a href="progetto.php">Progetto</a>
+              </span>
               <span class="menu-item">
                 <a href="artisti.php">Artisti</a>
               </span>
