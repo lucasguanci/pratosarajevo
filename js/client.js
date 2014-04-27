@@ -26,22 +26,33 @@ $(document).ready(function(){
     getNews();
   }
 
-  // init artisti section
-  if ( $("#artisti-wrapper").val()=="" ) {
+  // init section artisti
+  if ( $("#artisti-wrapper").length>0 ) {
     // display first artist
     getArtist("banchelli");
+    // events
+    $('a.artisti').on('click',function(e){
+      e.preventDefault();
+      source = $('div.artista.active').attr('id');
+      target = $(e.target).attr('data-target');
+      if ( source !== target ) {
+        $('div.artista.active').removeClass('active').hide();
+        $('a[data-target="'+source+'"]').removeClass('activeLink');
+        $(e.target).addClass('activeLink');
+        // load artist
+        getArtist(target);
+      }
+    });
   }
 
-  $('a.artisti').on('click',function(e){
-    e.preventDefault();
-    source = $('div.artista.active').attr('id');
-    target = $(e.target).attr('data-target');
-    if ( source !== target ) {
-      $('div.artista.active').removeClass('active').hide();
-      // load artist
-      getArtist(target);
-    }
-  });
+  $('a.to-top').on('click', function(e) {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
+  })
+
+  // init section progetto
+  if ( $("#progetto-wrapper").length>0 ) {
+    displayContent('progetto');
+  }
 
   $.get('http://api.spreaker.com/user/7225701/episodes', function(data) {
     var results = data.response.pager.results;
@@ -92,5 +103,19 @@ function getNews() {
         $("#news-wrapper").append(post_cnt);
       });
     })
+  });
+}
+
+function displayContent(type) {
+  $('a.'+type).on('click',function(e){
+    e.preventDefault();
+    source = $('div.'+type+'.active').attr('id');
+    target = $(e.target).attr('data-target');    
+    if ( source !== target ) {
+      $('#'+source).removeClass('active').hide();
+      $('#'+target).addClass('active').show();
+      $('a[data-target="'+source+'"]').removeClass('activeLink');
+      $(e.target).addClass('activeLink');
+    }
   });
 }

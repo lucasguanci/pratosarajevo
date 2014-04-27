@@ -1,0 +1,78 @@
+/**
+ * colors
+ */
+@magenta: rgb(200,0,100); /*rgb(230,0,115);*/
+@light-gray: rgb(245,245,245);
+@medium-gray: rgb(240,240,240);
+@gray: rgb(70,70,70);
+@gray-magenta: rgb(92,65,74); //rgb(130,115,120);
+@black-footer: rgb(33,33,33);
+
+/**
+ * Fonts
+ */
+strong, b {
+  font-weight: bold;
+}
+em, i {
+  font-style: italic;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', Arial, sans-serif;
+  font-weight: bold;
+}
+
+/**
+ * Mixins
+ */
+.shadow(@alfa: 0.8) {
+  -webkit-box-shadow: inset 0px 8px 8px -6px rgba(0, 0, 0, @alfa);
+  -moz-box-shadow: inset 0px 8px 8px -6px rgba(0, 0, 0, @alfa);
+  box-shadow: inset 0px 8px 8px -6px rgba(0, 0, 0, @alfa);
+}
+.outer-shadow(@alfa: 0.8) {
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(31, 31, 31, @alfa);
+  -moz-box-shadow:    0px 5px 5px 0px rgba(31, 31, 31, @alfa);
+  box-shadow:         0px 5px 5px 0px rgba(31, 31, 31, @alfa);
+}
+.text-shadow(@alfa: 1) {
+  text-shadow: 2px 2px 3px rgba(33, 33, 33, @alfa);
+}
+
+/**
+ * General
+ */
+hr { border-bottom: 1px dotted rgb(128,128,128); }
+
+/**
+ * Secondary pages
+ */
+section#content {
+  margin-top: 8em;
+  div.sidebar {
+    a.activeLink {
+      color: @magenta;
+      font-weight: bold;
+    }
+  }
+  div.secondary {
+    a {
+      color: black;
+      border-bottom: 1px dotted;
+      text-decoration: none;
+      &:hover {
+        border-bottom: none;
+      };
+    }
+  }
+}
+div#to-top {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  a.to-top {
+    .fa-arrow-circle-up {
+      color: @magenta;    
+    }
+  }
+}
