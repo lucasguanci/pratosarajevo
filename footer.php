@@ -89,7 +89,7 @@
       </p>
     </div>
   </script>
-  <!-- /templates -->
+
   <script type="text/template" id="template-artisti-nested">
     <div class="item <% if (i==0) { %> active <% } %>">
       <img src="<%= immagine %>">
@@ -115,6 +115,17 @@
       </p>
     </div>
   </script>
+
+  <script type="text/template" id="tpl-news-home">
+    <div id="<%= data.id %>" class="col-md-3 news">
+      <h2><%= data.titolo%></h2>
+      <img src="<%= data.immagine %>" />
+      <p class="titolo"><%=data.titolo%></p>
+      <p class="cnt"><%=data.contenuto%></p>
+    </div>
+  </script>
+
+  <!-- /templates -->
 
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

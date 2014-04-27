@@ -20,6 +20,12 @@ $(document).ready(function(){
   var map = L.mapbox.map('map', 'brontoluke.hnlbg8n2')
     .setView([43.879, 11.096], 14);
 
+  // init news
+  // if #news-wrapper exists then populate news
+  if ( $("#news-wrapper").length>0 ) {
+    getNews();
+  }
+
   // init artisti section
   if ( $("#artisti-wrapper").val()=="" ) {
     // display first artist
@@ -76,4 +82,15 @@ function getArtist(artist) {
   });
 }
 
-
+function getNews() {
+  $.getJSON('api.php/news', function(data) {
+    _.each(data, function(post) {
+      id = post.split(/:/)[1];
+      $.getJSON('api.php/news/'+id, function(post_data) {
+        var template = _.template( $('#tpl-news-home').html() );
+        var post_cnt = template({data:post_data});
+        $("#news-wrapper").append(post_cnt);
+      });
+    })
+  });
+}
