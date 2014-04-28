@@ -60,7 +60,7 @@
   <script id="tpl-show-ctype" type="text/template">
     <div class="ctype-add-new">
       <button type="button" class="btn btn-primary add" data-ctype="<%= ctype %>">add new</button>
-      <div class="cnt" data-model="new"></div>
+      <div class="cnt <%= ctype %>" data-model="new"></div>
     </div>
     <% _.each(items, function(model) { %>
       <div class="ctype-item">
@@ -96,31 +96,16 @@
       <input type="text" class="form-control immagini" name="immagini_3" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[2]) !== "undefined" ) { %> value="<%= model.immagini[2] %>" <% } %> />
       <!-- didascalie_1 -->
       <label for="didascalie_1">didascalie_1</label>
-      <textarea class="form-control didascalie" name="didascalie_1" rows="5">
-        <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[0]) !== "undefined" ) { %>
-          <%= model.didascalie[0] %>
-        <% } %>
-      </textarea/>
+      <textarea class="form-control didascalie" name="didascalie_1" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalie[0]) !== "undefined" ) { %><%= model.didascalie[0] %><% } %></textarea/>
       <!-- didascalie_2 -->
       <label for="didascalie_2">didascalie_2</label>
-      <textarea class="form-control didascalie" name="didascalie_2" rows="5">
-        <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[1]) !== "undefined" ) { %>
-          <%= model.didascalie[1] %>
-        <% } %>
-      </textarea/>
+      <textarea class="form-control didascalie" name="didascalie_2" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalie[1]) !== "undefined" ) { %><%= model.didascalie[1] %><% } %></textarea/>
       <!-- didascalie_3 -->
       <label for="didascalie_3">didascalie_3</label>
-      <textarea class="form-control didascalie" name="didascalie_3" rows="5">
-        <% if ( typeof(model)!=="undefined" && typeof(model.didascalie[2]) !== "undefined" ) { %>
-          <%= model.didascalie[2] %>
-        <% } %>
-      </textarea/>
+      <textarea class="form-control didascalie" name="didascalie_3" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalie[2]) !== "undefined" ) { %><%= model.didascalie[2] %><% } %></textarea/>
       <!-- bio -->
       <label for="bio">bio</label>
-      <textarea class="form-control" name="bio" rows="10">
-        <% if ( typeof(model)!=="undefined" && typeof(model.bio) !== "undefined" ) { %> 
-        <%= model.bio %> <% } %>
-      </textarea>
+      <textarea class="form-control" name="bio" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.bio) !== "undefined" ) { %><%= model.bio %><% } %></textarea>
       <!-- submit -->
       <button type="submit" class="btn btn-primary">Invia</button>
     </form>
@@ -133,10 +118,7 @@
       <input type="text" class="form-control" name="titolo" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.titolo) !== "undefined" ) { %> value="<%= model.titolo %>" <% } %> />
       <!-- contenuto -->
       <label for="contenuto">contenuto</label>
-      <textarea class="form-control" name="contenuto" rows="10">
-        <% if ( typeof(model)!=="undefined" && typeof(model.contenuto) !== "undefined" ) { %> 
-        <%= model.contenuto %> <% } %>
-      </textarea>
+      <textarea class="form-control" name="contenuto" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.contenuto) !== "undefined" ) { %><%= model.contenuto %> <% } %></textarea>
       <!-- immagine -->
       <label for="immagine">immagine</label>
       <input type="text" class="form-control" name="immagine" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagine) !== "undefined" ) { %> value="<%= model.immagine %>" <% } %> />

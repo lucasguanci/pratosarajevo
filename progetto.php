@@ -49,7 +49,7 @@
               <div id="to-top">
                 <a class="to-top"><i class="fa fa-arrow-circle-up fa-2x"></i></a>
               </div>
-              <?php include_once 'content-concept.php' ?>
+              <?php include_once './content-concept.php' ?>
             </div>
             <div id="staff" class="progetto">
               <p class="staff">

@@ -8,11 +8,11 @@ var app = app || {};
       this.ctype = [
         {
           name: "artists",
-          url: "api.php/artists"
+          url: "/artists"
         },
         {
           name: "news",
-          url: "api.php/news"
+          url: "/news"
         }
       ];     
       this.render();
@@ -40,7 +40,7 @@ var app = app || {};
       var self = this;
       if ( typeof(model)=="undefined" ) {
         // CREATE
-        var target = $('div.cnt[data-model="new"]');
+        var target = $('div.cnt.'+ctype+'[data-model="new"]');
         if ( $(target).hasClass("active") ) {
           target.removeClass("active").toggle();
         } else {
@@ -67,7 +67,7 @@ var app = app || {};
           model = model.split(/:/)[1];
         }
         // load and display model data
-        $.getJSON('api.php/'+ctype+'/'+model)
+        $.getJSON('/'+ctype+'/'+model)
           .done(function(data) {
             if ( ctype=="news" ) {
               model = "post:"+model;
@@ -108,7 +108,7 @@ var app = app || {};
       if ( typeof(model)!=="undefined" ) {
         // UPDATE
         $.ajax({
-          url: 'api.php/'+ctype+'/'+model,
+          url: '/'+ctype+'/'+model,
           type: 'PUT',
           // contentType: 'application/json',
           // dataType: "json",
@@ -127,7 +127,7 @@ var app = app || {};
         });
       } else {
         // CREATE
-        $.post('api.php/'+ctype, JSON.stringify(data), function(data,textStatus,jqXHR) {
+        $.post('/'+ctype, JSON.stringify(data), function(data,textStatus,jqXHR) {
             alert('DB post.');
             console.log( 'POST response:' );
             console.dir( data );

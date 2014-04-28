@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 require 'lib/Slim/Slim.php';
 require 'lib/Predis/Autoloader.php';

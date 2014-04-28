@@ -4,7 +4,7 @@ var app = app || {};
   app.addEditView = Backbone.View.extend({
     render: function(ctype,data) {
       switch ( ctype ) {
-        case "artisti":
+        case "artists":
           tpl = _.template($('#tpl-add-edit-artisti').html());
           this.$el.html( tpl({model: data, ctype: ctype}));
           return this.$el;

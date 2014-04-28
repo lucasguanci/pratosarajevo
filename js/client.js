@@ -82,7 +82,7 @@ $(document).ready(function(){
 });
 
 function getArtist(artist) {
-  $.getJSON('api.php/artists/'+artist,function(data) {
+  $.getJSON('/artists/'+artist,function(data) {
     var nested = _.template( $("#template-artisti-nested").html() );
     var template = _.template( $("#template-artisti").html() );
     var html = template({data:data,nested:nested});
@@ -94,10 +94,10 @@ function getArtist(artist) {
 }
 
 function getNews() {
-  $.getJSON('api.php/news', function(data) {
+  $.getJSON('/news', function(data) {
     _.each(data, function(post) {
       id = post.split(/:/)[1];
-      $.getJSON('api.php/news/'+id, function(post_data) {
+      $.getJSON('/news/'+id, function(post_data) {
         var template = _.template( $('#tpl-news-home').html() );
         var post_cnt = template({data:post_data});
         $("#news-wrapper").append(post_cnt);
