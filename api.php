@@ -138,9 +138,7 @@ function updateArtist($username) {
 function getNews() {  
   try {
     $r = redisConnect();
-    // number of news
-    $N = 4;
-    $news = $r->lrange("news",0,$N-1);
+    $news = $r->lrange("news",0,-1);
     //header('Content-type: application/json');
     echo json_encode($news);
   } catch (Exception $e) {

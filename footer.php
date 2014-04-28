@@ -69,65 +69,7 @@
   <!-- /footer -->
 
   <!-- templates -->
-  <script id="template-artisti--old" type="text/x-handlebars-template">
-    <div id="{{username}}" class="artista active">
-      <h2>{{nome}} {{cognome}}</h2>
-      <div id="carousel-{{username}}" class="carousel slide artisti" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          {{#foreach immagini}}
-            <div class="item {{#if $first}}active{{/if}}">
-              <img src="{{url}}">
-              <div class="carousel-caption">
-                {{{didascalia}}}
-              </div>
-            </div>              
-          {{/foreach}}
-        </div>
-      </div>
-      <p>
-        {{{bio}}}
-      </p>
-    </div>
-  </script>
-
-  <script type="text/template" id="template-artisti-nested">
-    <div class="item <% if (i==0) { %> active <% } %>">
-      <img src="<%= immagine %>">
-      <div class="carousel-caption">
-        <%= didascalia %>
-      </div>
-    </div>                          
-  </script>
-  
-  <script id="template-artisti" type="text/template">
-    <div id="<%= data.username %>" class="artista active">
-      <h2><%= data.nome %></h2>
-      <div id="carousel-<%=data.username%>" class="carousel slide artisti" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <% for ( i=0; i<3; i++ ) { %>
-            <%= nested({i: i, immagine: data.immagini[i], didascalia: data.didascalie[i]}) %>
-          <% } %>
-        </div>
-      </div>
-      <p>
-        <%= data.bio %>
-      </p>
-    </div>
-  </script>
-
-  <script type="text/template" id="tpl-news-home">
-    <div id="<%= data.id %>" class="col-md-3 news">
-      <h2><%= data.titolo%></h2>
-      <img src="<%= data.immagine %>" />
-      <p class="titolo"><%=data.titolo%></p>
-      <p class="cnt"><%=data.contenuto%></p>
-    </div>
-  </script>
-
-  <!-- /templates -->
-
+  <?php include_once 'inc/templates.php' ?>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/lib/jquery.js"></script>
@@ -137,10 +79,12 @@
   <script src="js/lib/less-1.7.0.js"></script>
   <!-- Mapbox -->
   <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
-  <!-- Handlebars -->
+  <!-- Templating engines -->
   <script src="js/lib/handlebars.js"></script>
   <script src="js/lib/underscore.js"></script>
   <!-- PS -->
+  <script src="js/lib/moment.js"></script>
+  <script src="js/lib/lang/it.js"></script>
   <script type="text/javascript" src="http://static.spreaker.net/js/sdk_client.js"></script>
   <script src="js/client.js"></script>
 </body>

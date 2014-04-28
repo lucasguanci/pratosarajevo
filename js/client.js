@@ -17,15 +17,10 @@ Handlebars.registerHelper('times', function(n, block) {
 });
 
 $(document).ready(function(){
-  var map = L.mapbox.map('map', 'brontoluke.hnlbg8n2')
-    .setView([43.879, 11.096], 14);
-
   // init news
-  // if #news-wrapper exists then populate news
   if ( $("#news-wrapper").length>0 ) {
-    getNews();
+    displayNews();
   }
-
   // init section artisti
   if ( $("#artisti-wrapper").length>0 ) {
     // display first artist
@@ -44,16 +39,24 @@ $(document).ready(function(){
       }
     });
   }
-
-  $('a.to-top').on('click', function(e) {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-  })
-
   // init section progetto
   if ( $("#progetto-wrapper").length>0 ) {
+    // back to top
+    $('a.to-top').on('click', function(e) {
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
+    });
+    // display content
     displayContent('progetto');
   }
-
+  // init section archivio
+  if ( $("#archivio-wrapper").length>0 ) {
+    displayContent('archivio');
+    initArchivio();
+  }
+  // init Map
+  var map = L.mapbox.map('map', 'brontoluke.hnlbg8n2')
+    .setView([43.879, 11.096], 14);
+  // Spreaker API
   $.get('http://api.spreaker.com/user/7225701/episodes', function(data) {
     var results = data.response.pager.results;
     var IS_LIVE = 0;
@@ -78,7 +81,6 @@ $(document).ready(function(){
       // list episodes
     }
   });
-
 });
 
 function getArtist(artist) {
@@ -93,9 +95,10 @@ function getArtist(artist) {
   });
 }
 
-function getNews() {
+function displayNews() {
   $.getJSON('/news', function(data) {
-    _.each(data, function(post) {
+    var lastNews = _.first(data,4);
+    _.each(lastNews, function(post) {
       id = post.split(/:/)[1];
       $.getJSON('/news/'+id, function(post_data) {
         var template = _.template( $('#tpl-news-home').html() );
@@ -117,5 +120,21 @@ function displayContent(type) {
       $('a[data-target="'+source+'"]').removeClass('activeLink');
       $(e.target).addClass('activeLink');
     }
+  });
+}
+
+function initArchivio() {
+  // GET all news
+  $.getJSON('/news', function(data) {
+    _.each(data, function(post) {
+      id = post.split(/:/)[1];
+      $.getJSON('/news/'+id, function(post_data) {
+        moment.lang('it');
+        post_data.data = moment(post_data.data).format("dddd, D MMMM");
+        var template = _.template( $('#tpl-archivio').html() );
+        var cnt = template({data:post_data});
+        $("#archivio-list").append(cnt);
+      });
+    })
   });
 }

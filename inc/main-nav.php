@@ -51,7 +51,9 @@
               <span class="menu-item">
                 <a href="artisti.php">Artisti</a>
               </span>
-              <span class="menu-item">News e Eventi</span>
+              <span class="menu-item">
+                <a href="archivio-news.php">News e Eventi</a>
+              </span>
               <!-- <span class="menu-item">Rassegna stampa</span> -->
               <span class="menu-item last">
                 <a href="contatti.php">Contatti</a>
