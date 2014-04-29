@@ -64,6 +64,9 @@ body {
 /**
  * Navbar
  */
+ nav.navbar-fixed-top {
+  border-top: solid 1em @magenta;
+ }
 .navbar {
   color: rgb(51,51,51);
   background-color: rgba(255,255,255,1);
@@ -86,13 +89,46 @@ body {
   padding: 7px 15px;
   height: auto; // default is 50px, check for mobile
 }
+div#header-right {
+  text-align: right;
+  float: right;
+  padding: 12px 0;
+  a {
+    color: rgb(115,115,115); 
+  }
+  p.claim {
+    font-size: 80%;
+    color: @gray;
+  }
+  p.social {
+    margin-top: 1.5em;
+    font-size: 90%;
+    .fa {
+      color: rgb(115,115,115);
+    }
+  }
+  p.menu, p.menu a {
+    font-size: 100%;
+    color: @magenta;
+  }
+}
 p.navbar-text {
   color: rgb(0,0,0);
   margin-top: 0;
   margin-bottom: 0;
   margin: 0;
 }
+p.navbar-text.claim {
+  text-align: right;
+  font-size: 80%;
+  margin-top: 0;
+  margin-bottom: 7px;
+  a {
+    color: rgb(115,115,115);    
+  }
+}
 p.navbar-text.social {
+  text-align: right;
   font-size: 90%;
   margin-top: 0;
   margin-bottom: 7px;
@@ -135,12 +171,12 @@ p.navbar-text.menu {
  * Carousel
 **/
 div.carousel {
-  margin-top: 9.5em;
+  margin-top: 9em;
   .shadow;
 }
 @media screen and (min-width: 768px) {
   div.carousel {
-    margin-top: 8em;
+    margin-top: 7.5em;
   }
 }
 .carousel-control {
@@ -283,6 +319,21 @@ section#content {
       width: 70%;
       padding: 0;
       bottom: 0;
+    }
+  }
+  div.news {
+    p.titolo {
+      font-weight: bold;
+      color: @magenta;
+      margin-bottom: 0;
+    }
+    a {
+      text-decoration: none;
+      color: @magenta;
+      border-bottom: 1px dotted @magenta;
+    }
+    p.cnt {
+      margin-top: 0;
     }
   }
 }

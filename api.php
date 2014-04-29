@@ -181,7 +181,7 @@ function updatePost($id) {
     $query->bindParam("titolo", $post->titolo);
     $query->bindParam("contenuto", $post->contenuto);
     $query->bindParam("immagine", $post->immagine);
-    $query->bindParam("id", $post->id);
+    $query->bindParam("id", $id);
     $query->execute();
     $db = null;
     echo json_encode($post);    
