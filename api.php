@@ -13,7 +13,6 @@ Predis\Autoloader::register();
 /* Artists */
 $app->get('/artists','getArtists');
 $app->get('/artists/:username','getArtist');
-// -- $app->get('/artists/:aid','getArtistByAid');
 $app->post('/artists','addArtist');
 $app->put('/artists/:username','updateArtist');
 // $app->delete('/artists/:id','deleteArtist');
@@ -33,45 +32,30 @@ $app->run();
  */
 // GET /artists
 function getArtists() {  
+  $sql = "SELECT * FROM artists ORDER BY username";
   try {
-    $r = redisConnect();
-    $n = $r->get('global:nextArtistId');
-    $artist = array(); 
-    for ( $i=0; $i<$n; $i++ ) {
-      $aid = $i+1;
-      $artist[$i] = $r->get("aid:$aid:username");          
-    }
+    $db = mysqlConnect();
+    $query = $db->query($sql);
+    $result = $query->fetchall(PDO::FETCH_OBJ);
+    $db = null;
     //header('Content-type: application/json');
-    echo json_encode($artist);
+    echo json_encode($result);
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
 
-// GET /artists/:username
+// GET /artists/:id
 function getArtist($username) {
+  $sql = "SELECT * FROM artists WHERE username=:username";
   try {
-    $r = redisConnect();
-    $aid = $r->get("username:$username:aid");
-    //
-    $immagini[] = array();     
-    for ( $i=0; $i<$r->llen("aid:$aid:immagini"); $i++ ) {
-      $immagini[$i] = $r->lindex("aid:$aid:immagini",$i);
-    }
-    $didascalie[] = array();
-    for ( $i=0; $i<$r->llen("aid:$aid:immagini"); $i++ ) {
-      $didascalie[$i] = $r->lindex("aid:$aid:didascalie",$i);
-    }
-    $artist = array(
-      "username"=> $r->get("aid:$aid:username"),
-      "nome"=> $r->get("aid:$aid:nome"),
-      "cognome"=> $r->get("aid:$aid:cognome"),
-      "email"=> $r->get("aid:$aid:email"),
-      "bio"=> $r->get("aid:$aid:bio"),
-      "immagini" => $immagini,
-      "didascalie" => $didascalie
-    );
-    header('Content-type: application/json');
+    $db = mysqlConnect();
+    $query = $db->prepare($sql);
+    $query->bindParam("username",$username);
+    $query->execute();
+    $artist = $query->fetchObject();
+    $db = null;
+    // header('Content-type: application/json');
     echo json_encode($artist);  
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -82,49 +66,48 @@ function getArtist($username) {
 function addArtist() {
   $request = Slim\Slim::getInstance()->request();
   $artist = json_decode($request->getBody());
+  $sql = "INSERT INTO artists (username, nome, immagine_1, immagine_2, immagine_3, didascalia_1, didascalia_2, didascalia_3, bio) VALUES (:username, :nome, :immagine_1, :immagine_2, :immagine_3, :didascalia_1, :didascalia_2, :didascalia_3, :bio)";
   try {
-    $r = redisConnect();
-    $r->incr('global:nextArtistId');
-    $aid = $r->get('global:nextArtistId');
-    $username = $artist->username;
-    $r->set("username:$username:aid", $aid);
-    $r->set("aid:$aid:username",$artist->username);
-    $r->set("aid:$aid:nome",$artist->nome);
-    $r->set("aid:$aid:bio",$artist->bio);
-    $l = sizeof($artist->immagini);
-    for ( $i=0; $i<$l; $i++ ) {
-      $r->rpush("aid:$aid:immagini", $artist->immagini[$i]);
-      $r->rpush("aid:$aid:didascalie", $artist->didascalie[$i]);
-    }
+    $db = mysqlConnect();
+    $query = $db->prepare($sql);
+    $query->bindParam("username", $artist->username);
+    $query->bindParam("nome", $artist->nome);
+    $query->bindParam("immagine_1", $artist->immagini[0]);
+    $query->bindParam("immagine_2", $artist->immagini[1]);
+    $query->bindParam("immagine_3", $artist->immagini[2]);
+    $query->bindParam("didascalia_1", $artist->didascalie[0]);
+    $query->bindParam("didascalia_2", $artist->didascalie[1]);
+    $query->bindParam("didascalia_3", $artist->didascalie[2]);
+    $query->bindParam("bio", $artist->bio);
+    $query->execute();
+    $artist->id = $db->lastInsertId();
+    $db = null;
     echo json_encode($artist);    
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
 
-// PUT /artists/:username
+// PUT /artists/:id
 function updateArtist($username) {
   $request = Slim\Slim::getInstance()->request();
   $artist = json_decode($request->getBody());
+  $sql = "UPDATE artists SET username=:username, nome=:nome, immagine_1=:immagine_1, immagine_2=:immagine_2, immagine_3=:immagine_3, didascalia_1=:didascalia_1, didascalia_2=:didascalia_2, didascalia_3=:didascalia_3, bio=:bio WHERE username=:username";
   try {
-    $r = redisConnect();
-    $aid = $r->get("username:$username:aid");
-    $r->set("aid:$aid:username",$artist->username);
-    $r->set("aid:$aid:nome",$artist->nome);
-    $r->set("aid:$aid:bio",$artist->bio);
-    $l = sizeof($artist->immagini); // 3
-    for ( $i=0; $i<$l; $i++ ) {
-      if ( $r->lindex("aid:$aid:immagini", $i) !== null ) {
-        $r->lset("aid:$aid:immagini", $i, $artist->immagini[$i]);  
-      } else {
-        $r->rpush("aid:$aid:immagini", $artist->immagini[$i]);
-      }
-      if ( $r->lindex("aid:$aid:didascalie", $i) !== null ) {
-        $r->lset("aid:$aid:didascalie", $i, $artist->didascalie[$i]);  
-      } else {
-        $r->rpush("aid:$aid:didascalie", $artist->didascalie[$i]);
-      }      
-    }
+    $db = mysqlConnect();
+    $query = $db->prepare($sql);
+    $query->bindParam("username", $username);
+    $query->bindParam("nome", $artist->nome);
+    $query->bindParam("immagine_1", $artist->immagini[0]);
+    $query->bindParam("immagine_2", $artist->immagini[1]);
+    $query->bindParam("immagine_3", $artist->immagini[2]);
+    $query->bindParam("didascalia_1", $artist->didascalie[0]);
+    $query->bindParam("didascalia_2", $artist->didascalie[1]);
+    $query->bindParam("didascalia_3", $artist->didascalie[2]);
+    $query->bindParam("bio", $artist->bio);
+    $query->bindParam("id", $artist->id);
+    $query->execute();
+    $db = null;
     echo json_encode($artist);    
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'},"data":'.json_encode($artist).'}'; 
@@ -136,27 +119,28 @@ function updateArtist($username) {
  */
 // GET /news
 function getNews() {  
+  $sql = "SELECT * FROM news ORDER BY id DESC";
   try {
-    $r = redisConnect();
-    $news = $r->lrange("news",0,-1);
-    //header('Content-type: application/json');
-    echo json_encode($news);
+    $db = mysqlConnect();
+    $query = $db->query($sql);
+    $result = $query->fetchall(PDO::FETCH_OBJ);
+    $db = null;
+    echo json_encode($result);
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
 
+// GET /news/:id
 function getPost($id) {
+  $sql = "SELECT * FROM news WHERE id=:id";
   try {
-    $r = redisConnect();
-    $post = array(
-      "id" => $r->hget("post:$id","id"),
-      "data" => $r->hget("post:$id","data"),
-      "titolo" => $r->hget("post:$id","titolo"),
-      "contenuto" => $r->hget("post:$id","contenuto"),
-      "immagine" => $r->hget("post:$id","immagine")
-    );
-    header('Content-type: application/json');
+    $db = mysqlConnect();
+    $query = $db->prepare($sql);
+    $query->bindParam("id",$id);
+    $query->execute();
+    $post = $query->fetchObject();
+    $db = null;
     echo json_encode($post);  
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -167,19 +151,18 @@ function getPost($id) {
 function addPost() {
   $request = Slim\Slim::getInstance()->request();
   $post = json_decode($request->getBody());
+  $sql = "INSERT INTO news (data, data_pubblicazione, titolo, contenuto, immagine) VALUES (:data, :data_pubblicazione, :titolo, :contenuto, :immagine)";
   try {
-    $r = redisConnect();
-    $r->incr('global:nextPostId');
-    $id = $r->get("global:nextPostId");
-    $r->hmset("post:$id", array(
-      "id" => $id,
-      "data" => $post->data,
-      "titolo" => $post->titolo,
-      "contenuto" => $post->contenuto,
-      "immagine" => $post->immagine
-      )
-    );
-    $r->lpush("news","post:$id");
+    $db = mysqlConnect();
+    $query = $db->prepare($sql);
+    $query->bindParam("data", $post->data);
+    $query->bindParam("data_pubblicazione", $post->data_pubblicazione);
+    $query->bindParam("titolo", $post->titolo);
+    $query->bindParam("contenuto", $post->contenuto);
+    $query->bindParam("immagine", $post->immagine);
+    $query->execute();
+    $post->id = $db->lastInsertId();
+    $db = null;
     echo json_encode($post);    
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -190,16 +173,17 @@ function addPost() {
 function updatePost($id) {
   $request = Slim\Slim::getInstance()->request();
   $post = json_decode($request->getBody());
+  $sql = "UPDATE news SET data_pubblicazione=:data_pubblicazione, titolo=:titolo, contenuto=:contenuto, immagine=:immagine WHERE id=:id";
   try {
-    $r = redisConnect();
-    $r->hmset("post:$id", array(
-      "id" => $id,
-      "data" => $post->data,
-      "titolo" => $post->titolo,
-      "contenuto" => $post->contenuto,
-      "immagine" => $post->immagine
-      )
-    );
+    $db = mysqlConnect();
+    $query = $db->prepare($sql);
+    $query->bindParam("data_pubblicazione", $post->data_pubblicazione);
+    $query->bindParam("titolo", $post->titolo);
+    $query->bindParam("contenuto", $post->contenuto);
+    $query->bindParam("immagine", $post->immagine);
+    $query->bindParam("id", $post->id);
+    $query->execute();
+    $db = null;
     echo json_encode($post);    
   } catch (Exception $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -223,6 +207,17 @@ function deletePost($id) {
 /**
  * DB Connection
  */
+// Connect to MySQL
+function mysqlConnect() {
+  $dbhost="127.0.0.1";
+  $dbuser="root";
+  $dbpass="coyote";
+  $dbname="ps";
+  $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  return $dbh;
+}
+
 // Connect to Redis 
 function redisConnect() {
   // redis to go

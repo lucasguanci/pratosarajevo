@@ -36,7 +36,8 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <% for ( i=0; i<3; i++ ) { %>
-          <%= nested({i: i, immagine: data.immagini[i], didascalia: data.didascalie[i]}) %>
+          <% var immagine = "immagine_"+i; var didascalia = "didascalia_"+i; %>
+          <%= nested({i: i, immagine: data[immagine], didascalia: data[didascalia]}) %>
         <% } %>
       </div>
     </div>

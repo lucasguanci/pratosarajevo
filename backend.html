@@ -65,7 +65,7 @@
     <% _.each(items, function(model) { %>
       <div class="ctype-item">
         <div class="model">
-          <%= model %>
+          <%=model%>
         </div>
         <div class="buttons">
           <button type="button" class="btn btn-primary edit" data-ctype="<%=ctype%>" data-model="<%=model%>">edit</button>
@@ -87,22 +87,22 @@
       <input type="text" class="form-control" name="nome" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.nome) !== "undefined" ) { %> value="<%= model.nome %>" <% } %> />
       <!-- immagini_1 -->
       <label for="immagini_1">immagini_1</label>
-      <input type="text" class="form-control immagini" name="immagini_1" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[0]) !== "undefined" ) { %> value="<%= model.immagini[0] %>" <% } %> />
+      <input type="text" class="form-control immagini" name="immagini_1" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagine_1) !== "undefined" ) { %> value="<%= model.immagine_1 %>" <% } %> />
       <!-- immagini_2 -->
       <label for="immagini_2">immagini_2</label>
-      <input type="text" class="form-control immagini" name="immagini_2" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[1]) !== "undefined" ) { %> value="<%= model.immagini[1] %>" <% } %> />
+      <input type="text" class="form-control immagini" name="immagini_2" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagine_2) !== "undefined" ) { %> value="<%= model.immagine_2 %>" <% } %> />
       <!-- immagini_3 -->
       <label for="immagini_3">immagini_3</label>
-      <input type="text" class="form-control immagini" name="immagini_3" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagini[2]) !== "undefined" ) { %> value="<%= model.immagini[2] %>" <% } %> />
+      <input type="text" class="form-control immagini" name="immagini_3" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagine_3) !== "undefined" ) { %> value="<%= model.immagine_3 %>" <% } %> />
       <!-- didascalie_1 -->
       <label for="didascalie_1">didascalie_1</label>
-      <textarea class="form-control didascalie" name="didascalie_1" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalie[0]) !== "undefined" ) { %><%= model.didascalie[0] %><% } %></textarea/>
+      <textarea class="form-control didascalie" name="didascalie_1" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalia_1) !== "undefined" ) { %><%= model.didascalia_1 %><% } %></textarea/>
       <!-- didascalie_2 -->
       <label for="didascalie_2">didascalie_2</label>
-      <textarea class="form-control didascalie" name="didascalie_2" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalie[1]) !== "undefined" ) { %><%= model.didascalie[1] %><% } %></textarea/>
+      <textarea class="form-control didascalie" name="didascalie_2" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalia_2) !== "undefined" ) { %><%= model.didascalia_2 %><% } %></textarea/>
       <!-- didascalie_3 -->
       <label for="didascalie_3">didascalie_3</label>
-      <textarea class="form-control didascalie" name="didascalie_3" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalie[2]) !== "undefined" ) { %><%= model.didascalie[2] %><% } %></textarea/>
+      <textarea class="form-control didascalie" name="didascalie_3" rows="5"><% if ( typeof(model)!=="undefined" && typeof(model.didascalia_3) !== "undefined" ) { %><%= model.didascalia_3 %><% } %></textarea/>
       <!-- bio -->
       <label for="bio">bio</label>
       <textarea class="form-control" name="bio" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.bio) !== "undefined" ) { %><%= model.bio %><% } %></textarea>
@@ -113,6 +113,9 @@
 
   <script id="tpl-add-edit-news" type="text/template">
     <form class="backend" data-ctype="<%= ctype %>" <% if (typeof(model)!=="undefined") { %> data-model="<%= model.id %>" <% } %> >
+      <!-- data_pubblicazione -->
+      <label for="data_pubblicazione">data_pubblicazione</label>
+      <input type="text" class="form-control" name="data_pubblicazione" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.data_pubblicazione) !== "undefined" ) { %> value="<%= model.data_pubblicazione %>" <% } %> />      
       <!-- titolo -->
       <label for="titolo">titolo</label>
       <input type="text" class="form-control" name="titolo" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.titolo) !== "undefined" ) { %> value="<%= model.titolo %>" <% } %> />

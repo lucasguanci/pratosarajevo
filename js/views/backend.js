@@ -31,6 +31,7 @@ var app = app || {};
           .done(function(data) {
             subview = new app.ctypeView();    
             self.$el.find('#'+type.name).append(subview.render(type.name,data));
+            console.log('type: '+type.name);
           });
       });
     },
@@ -62,18 +63,11 @@ var app = app || {};
           });
           $('div.cnt[data-model="'+model+'"]').addClass("active").show();        
         }
-        // if ctype==news get proper model id, i.e. 1, 2, ..
-        if ( ctype=="news" ) {
-          model = model.split(/:/)[1];
-        }
         // load and display model data
         $.getJSON('/'+ctype+'/'+model)
           .done(function(data) {
-            if ( ctype=="news" ) {
-              model = "post:"+model;
-            }            
             subview = new app.addEditView();
-            self.$el.find('div.cnt[data-model="'+model+'"]').append(subview.render(ctype, data));
+            self.$el.find('div.cnt[data-model="'+model+'"]').empty().append(subview.render(ctype, data));
           });
       }
     },
@@ -99,6 +93,7 @@ var app = app || {};
           break;
         case "news":
           data.data = moment().format();
+          data.data_pubblicazione = $(e.target).find('input[name="data_pubblicazione"]').val();
           data.titolo = $(e.target).find('input[name="titolo"]').val();
           data.contenuto = $(e.target).find('textarea[name="contenuto"]').val();
           data.immagine = $(e.target).find('input[name="immagine"]').val();
