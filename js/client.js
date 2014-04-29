@@ -90,7 +90,7 @@ function getArtist(artist) {
     var html = template({data:data,nested:nested});
     $('#artisti-wrapper').empty().append(html);
     $('#carousel-'+data.username).carousel({
-      interval: 4000
+      interval: 3000
     })
   });
 }

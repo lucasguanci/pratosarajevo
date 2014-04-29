@@ -21,7 +21,7 @@
 </script>
 
 <script type="text/template" id="template-artisti-nested">
-  <div class="item <% if (i==0) { %> active <% } %>">
+  <div class="item <% if (i==1) { %> active <% } %>">
     <img src="<%= immagine %>">
     <div class="carousel-caption">
       <%= didascalia %>
@@ -35,7 +35,7 @@
     <div id="carousel-<%=data.username%>" class="carousel slide artisti" data-ride="carousel">
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
-        <% for ( i=0; i<3; i++ ) { %>
+        <% for ( i=1; i<4; i++ ) { %>
           <% var immagine = "immagine_"+i; var didascalia = "didascalia_"+i; %>
           <%= nested({i: i, immagine: data[immagine], didascalia: data[didascalia]}) %>
         <% } %>
