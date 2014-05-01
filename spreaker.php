@@ -49,6 +49,10 @@
                 <a href="http://www.spreaker.com/show/prato-sarajevo-art-invasions-tracks" traget="_blank">visita il canale di Prato-Sarajevo su spreaker.com</a>
               </p>
               <p class="spreaker">
+                <h4>Intervista a Valentina Lapolla</h4>
+                <iframe src="//www.spreaker.com/embed/player/standard?autoplay=false&episode_id=4409415" style="width: 100%; height: 131px; min-width: 400px;" frameborder="0" scrolling="no"></iframe>
+              </p>              
+              <p class="spreaker">
                 <h4>Intervista a Giacomo Laser e Giulia del Piero</h4>
                 <iframe src="//www.spreaker.com/embed/player/standard?autoplay=false&episode_id=4379980" style="width: 100%; height: 131px; min-width: 400px;" frameborder="0" scrolling="no"></iframe>
               </p>
