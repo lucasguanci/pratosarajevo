@@ -51,11 +51,22 @@ $(document).ready(function(){
 
   // init section archivio
   if ( $("div.news-dettaglio").length>0 ) {
-    $.getJSON('/news', function(data) {
+    $.getJSON('/news', function(data) {        
       var archivio = new Archivio(data);
-      archivio.init();
+      archivio.displayIndex();
+      modelId = getUrlVars()["modelId"];
+      if ( typeof(modelId)!=="undefined" ) {
+        var model = {};
+        _.each(data, function(item) { 
+          if ( item.id==modelId ) { 
+            model = item;
+          }
+        })
+        archivio.displayContent(model);
+      } else {
+        archivio.displayContent(data[0]);
+      }
     });
-//    displayContent('archivio');
   }
 
   // init Map
@@ -132,26 +143,10 @@ function displayContent(type) {
   });
 }
 
-function initArchivio() {
-  // GET all news
-  $.getJSON('/news', function(data) {
-    _.each(data, function(post) {
-      id = post.split(/:/)[1];
-      $.getJSON('/news/'+id, function(post_data) {
-        moment.lang('it');
-        post_data.data = moment(post_data.data).format("dddd, D MMMM");
-        var template = _.template( $('#tpl-archivio').html() );
-        var cnt = template({data:post_data});
-        $("#archivio-list").append(cnt);
-      });
-    })
-  });
-}
-
 // archivio news
 function Archivio(news) {
   // news = [{news_1},{news_2},..]
-  this.news = news;
+  this.news = news || {};
   this.init = function() {
     this.displayIndex();
     var firstItem = $('ul.news-index>li')[0];
@@ -188,4 +183,13 @@ function Archivio(news) {
     var cnt = template({model: model});
     $('div.news-dettaglio').attr("id",model.id).empty().append(cnt);
   };  
+}
+
+// getUrlVars
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+  });
+  return vars;
 }
