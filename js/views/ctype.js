@@ -7,21 +7,21 @@ var app = app || {};
     render: function(ctype, data) {
       switch (ctype) {
         case "news":
-          var models_id = [];
+          var models = [];
           _.each(data,function(model) {
-            models_id.push(model.id);
+            models.push({id: model.id, titolo: model.titolo});
           });
-          data = models_id;
+          data = {models: models};
           break;
         case "artists":
-        var models_id = [];
+          var models = [];
           _.each(data,function(model) {
-            models_id.push(model.username);
+            models.push({id: model.username});
           });
-          data = models_id;
+          data = {models: models};
           break;
       }
-      this.$el.html( this.template({ctype: ctype, items: data}) );
+      this.$el.html( this.template({ctype: ctype, models: models}) );
       return this.$el;          
     }
   });

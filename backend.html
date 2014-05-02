@@ -62,17 +62,20 @@
       <button type="button" class="btn btn-primary add" data-ctype="<%= ctype %>">add new</button>
       <div class="cnt <%= ctype %>" data-model="new"></div>
     </div>
-    <% _.each(items, function(model) { %>
+    <% _.each(models, function(model) { %>
       <div class="ctype-item">
-        <div class="model">
-          <%=model%>
+        <div class="<%=model.id%> model">
+          <%=model.id%>
+          <% if ( ctype=="news") { %>
+            &nbsp;<%= model.titolo %>
+          <% } %>
         </div>
         <div class="buttons">
-          <button type="button" class="btn btn-primary edit" data-ctype="<%=ctype%>" data-model="<%=model%>">edit</button>
-          <button type="button" class="btn btn-primary remove" data-ctype="<%=ctype%>" data-model="<%=model%>">remove</button>
+          <button type="button" class="btn btn-primary edit" data-ctype="<%=ctype%>" data-model="<%=model.id%>">edit</button>
+          <button type="button" class="btn btn-primary remove" data-ctype="<%=ctype%>" data-model="<%=model.id%>">remove</button>
         </div>
         <div class="clear"></div>
-        <div class="cnt" data-model="<%=model%>"></div>
+        <div class="cnt" data-model="<%=model.id%>"></div>
       </div>
     <% }) %>
   </script>
@@ -122,9 +125,26 @@
       <!-- contenuto -->
       <label for="contenuto">contenuto</label>
       <textarea class="form-control" name="contenuto" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.contenuto) !== "undefined" ) { %><%= model.contenuto %> <% } %></textarea>
+      <!-- testo_esteso -->
+      <label for="testo_esteso">testo_esteso</label>
+      <textarea class="form-control" name="testo_esteso" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.testo_esteso) !== "undefined" ) { %><%= model.testo_esteso %> <% } %></textarea>
       <!-- immagine -->
       <label for="immagine">immagine</label>
       <input type="text" class="form-control" name="immagine" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagine) !== "undefined" ) { %> value="<%= model.immagine %>" <% } %> />
+      <!-- target -->
+      <label for="target">target</label>
+      <input type="text" class="form-control" name="target" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.target) !== "undefined" ) { %> value="<%= model.target %>" <% } %> />
+      <!-- in_evidenza -->
+      <label for="in_evidenza">in evidenza?</label>
+      <input class="form-control" type="checkbox" id="in_evidenza" name="in_evidenza" <% if ( typeof(model)!=="undefined" && model.in_evidenza ) { print('checked'); } %>/>
+      <!-- categoria -->
+      <label for="categoria">categoria</label>
+      <select id="categoria" class="form-control" name="categoria">
+        <option value="radio" <% if ( typeof(model)!=="undefined" && model.categoria=="radio") { print("selected") } %> >radio</option>
+        <option value="incontri" <% if ( typeof(model)!=="undefined" && model.categoria=="incontri") { print("selected") } %> >incontri</option>
+        <option value="eventi" <% if ( typeof(model)!=="undefined" && model.categoria=="eventi") { print("selected") } %> >eventi</option>
+        <option value="news" <% if ( typeof(model)!=="undefined" && model.categoria=="news") { print("selected") } %> >news</option>
+      </select>
       <!-- submit -->
       <button type="submit" class="btn btn-primary">Invia</button>
     </form>

@@ -1,25 +1,4 @@
-<script id="template-artisti--old" type="text/x-handlebars-template">
-  <div id="{{username}}" class="artista active">
-    <h2>{{nome}} {{cognome}}</h2>
-    <div id="carousel-{{username}}" class="carousel slide artisti" data-ride="carousel">
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        {{#foreach immagini}}
-          <div class="item {{#if $first}}active{{/if}}">
-            <img src="{{url}}">
-            <div class="carousel-caption">
-              {{{didascalia}}}
-            </div>
-          </div>              
-        {{/foreach}}
-      </div>
-    </div>
-    <p>
-      {{{bio}}}
-    </p>
-  </div>
-</script>
-
+<!-- artists template -->
 <script type="text/template" id="template-artisti-nested">
   <div class="item <% if (i==1) { %> active <% } %>">
     <img src="<%= immagine %>">
@@ -28,7 +7,6 @@
     </div>
   </div>                          
 </script>
-
 <script id="template-artisti" type="text/template">
   <div id="<%= data.username %>" class="artista active">
     <h2><%= data.nome %></h2>
@@ -46,16 +24,26 @@
     </p>
   </div>
 </script>
-
+<!-- news template -->
 <script type="text/template" id="tpl-news-home">
   <div id="<%= data.id %>" class="col-md-3 news">
-    <h2><%= data.titolo%></h2>
-    <img src="<%= data.immagine %>" />
-    <p class="titolo"><%=data.titolo%></p>
+    <h2><%= data.categoria %></h2>
+    <% if ( data.target!=null ) { %>
+      <a href="<%= data.target %>"><img src="<%= data.immagine %>" /></a>
+    <% } else { %>
+      <img src="<%= data.immagine %>" />
+    <% } %>
+    <p class="titolo">
+      <% if ( data.target!=null ) { %>
+        <a href="<%= data.target %>"><%= data.titolo %></a>
+      <% } else { %>
+        <%= data.titolo %>
+      <% } %>
+    </p>
     <p class="cnt"><%=data.contenuto%></p>
   </div>
 </script>
-
+<!-- archivio template -->
 <script type="text/template" id="tpl-archivio">
   <li class="archivio">
     <span class="data"><%=data.data%></span><br>

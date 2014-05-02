@@ -97,12 +97,13 @@ function getArtist(artist) {
 
 function displayNews() {
   $.getJSON('/news', function(data) {
-    models_id = [];
+    newsInEvidenza = [];
     _.each(data, function(model) {
-      models_id.push(model.id);
+      if ( model.in_evidenza ) {
+        newsInEvidenza.push(model.id);
+      }
     });
-    var lastNews = _.first(models_id,4);
-    _.each(lastNews, function(post) {
+    _.each(newsInEvidenza, function(post) {
       $.getJSON('/news/'+post, function(post_data) {
         var template = _.template( $('#tpl-news-home').html() );
         var post_cnt = template({data:post_data});

@@ -151,7 +151,7 @@ function getPost($id) {
 function addPost() {
   $request = Slim\Slim::getInstance()->request();
   $post = json_decode($request->getBody());
-  $sql = "INSERT INTO news (data, data_pubblicazione, titolo, contenuto, immagine) VALUES (:data, :data_pubblicazione, :titolo, :contenuto, :immagine)";
+  $sql = "INSERT INTO news (data, data_pubblicazione, titolo, contenuto, immagine) VALUES (:data, :data_pubblicazione, :titolo, :contenuto, :immagine, :target, :testo_esteso, :in_evidenza, :categoria)";
   try {
     $db = mysqlConnect();
     $query = $db->prepare($sql);
@@ -160,6 +160,10 @@ function addPost() {
     $query->bindParam("titolo", $post->titolo);
     $query->bindParam("contenuto", $post->contenuto);
     $query->bindParam("immagine", $post->immagine);
+    $query->bindParam("target", $post->target);
+    $query->bindParam("testo_esteso", $post->testo_esteso);
+    $query->bindParam("in_evidenza", $post->in_evidenza);
+    $query->bindParam("categoria", $post->categoria);
     $query->execute();
     $post->id = $db->lastInsertId();
     $db = null;
@@ -173,7 +177,7 @@ function addPost() {
 function updatePost($id) {
   $request = Slim\Slim::getInstance()->request();
   $post = json_decode($request->getBody());
-  $sql = "UPDATE news SET data_pubblicazione=:data_pubblicazione, titolo=:titolo, contenuto=:contenuto, immagine=:immagine WHERE id=:id";
+  $sql = "UPDATE news SET data_pubblicazione=:data_pubblicazione, titolo=:titolo, contenuto=:contenuto, immagine=:immagine, target=:target, testo_esteso=:testo_esteso, in_evidenza=:in_evidenza, categoria=:categoria WHERE id=:id";
   try {
     $db = mysqlConnect();
     $query = $db->prepare($sql);
@@ -181,6 +185,10 @@ function updatePost($id) {
     $query->bindParam("titolo", $post->titolo);
     $query->bindParam("contenuto", $post->contenuto);
     $query->bindParam("immagine", $post->immagine);
+    $query->bindParam("target", $post->target);
+    $query->bindParam("testo_esteso", $post->testo_esteso);
+    $query->bindParam("in_evidenza", $post->in_evidenza);
+    $query->bindParam("categoria", $post->categoria);
     $query->bindParam("id", $id);
     $query->execute();
     $db = null;

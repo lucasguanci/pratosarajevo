@@ -96,7 +96,11 @@ var app = app || {};
           data.data_pubblicazione = $(e.target).find('input[name="data_pubblicazione"]').val();
           data.titolo = $(e.target).find('input[name="titolo"]').val();
           data.contenuto = $(e.target).find('textarea[name="contenuto"]').val();
+          data.testo_esteso = $(e.target).find('textarea[name="testo_esteso"]').val();
           data.immagine = $(e.target).find('input[name="immagine"]').val();
+          data.target = $(e.target).find('input[name="target"]').val();
+          data.in_evidenza = $(e.target).find('input[name="in_evidenza"]').is(":checked");
+          data.categoria = $(e.target).find("select[name='categoria']").find('option:selected').text();
           break;
       }
       // check if CREATE or UPDATE      

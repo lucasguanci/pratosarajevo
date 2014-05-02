@@ -30,13 +30,8 @@
               </a>
             </li>
             <li>
-              <a class="sidebar progetto" data-target="staff">
-                Staff
-              </a>
-            </li>
-            <li>
-              <a class="sidebar progetto" data-target="sedi">
-                Sedi
+              <a class="sidebar progetto" data-target="partners">
+                Partners
               </a>
             </li>
           </ul>
@@ -51,42 +46,34 @@
               </div>
               <?php include_once './content-concept.php' ?>
             </div>
-            <div id="staff" class="progetto">
-              <p class="staff">
-                <strong>Centro per l'arte contemporanea Luigi Pecci</strong><br>
-                <a target="_blank" href="http://www.centropecci.it/">sito web</a>
+            <div id="partners" class="progetto">
+              <p class="partners">
+                Nell'ambito di<br>
+                <strong>TOSCANAINCONTEMPORANEA 2013</strong> 
               </p>
-              <p class="staff">
-                <strong>Dryphoto arte contemporanea</strong><br>
-                <a target="_blank" href="http://www.dryphoto.it/">sito web</a>
+              <p>
+                Ente Promotore<br>
+                <strong>REGIONE TOSCANA</strong><br>
+                <strong>PROVINCIA DI PRATO</strong>
               </p>
-              <p class="staff">
-                <strong>Kinkaleri</strong><br>
-                <a target="_blank" href="http://www.kinkaleri.it/">sito web</a>
-              </p>              
-            </div>
-            <div id="sedi" class="progetto">
-              <p class="sedi">
-                <strong>Centro per l'arte contemporanea Luigi Pecci</strong><br>
-                viale della Repubblica, 277<br>
-                tel. 0574-5317
+              <p>
+                Realizzazione e cura<br>
+                <a class="partners" target="_blank" href="http://www.centropecci.it/">CENTRO PER L'ARTE CONTEMPORANEA LUIGI PECCI, PRATO</a>
               </p>
-              <p class="sedi">
-                <strong>Dryphoto arte contemporanea</strong><br>
-                via delle Segherie 33/a<br>
-                tel. 0574-603186<br>
-                <a href="mailto:info@dryphoto.it">info@dryphoto.it</a>
+              <p>
+                con<br>
+                <a class="partners" target="_blank" href="http://www.dryphoto.it/">DRYPHOTO ARTE CONTEMPORANEA</a><br>
+                <a class="partners" target="_blank" href="http://www.kinkaleri.it/">KINKALERI</a>
               </p>
-              <p class="sedi">
-                <strong>Spazio K - Kinkaleri</strong><br>
-                via S. Chiara 38/2<br>
-                tel. 0574-448212<br>
-                <a href="mailto:info@kinkaleri.it">info@kinkaleri.it</a>
+              <p>
+                In collaborazione con<br>
+                <strong>COMUNE DI PRATO</strong><br>
+                <strong>COMUNE DI CARMIGNANO</strong><br>
+                <strong>SPAZIO D'ARTE ALBERTO MORETTI, CARMIGNANO (PO)</strong>
               </p>
-              <p class="sedi">
-                <strong>Schema Polis | Spazio d'arte Alberto Moretti</strong><br>
-                via Borgo, 4 Carmignano (PO)<br>
-                tel. 055-8750231<br>
+              <p>
+                In collegamento con<br>
+                <strong>ARS AEVI - MUSEO D'ARTE CONTEMPORANEA, SARAJEVO</strong>
               </p>
             </div>
           </div>
