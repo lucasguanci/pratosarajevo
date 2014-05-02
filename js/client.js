@@ -48,11 +48,16 @@ $(document).ready(function(){
     // display content
     displayContent('progetto');
   }
+
   // init section archivio
-  if ( $("#archivio-wrapper").length>0 ) {
-    displayContent('archivio');
-    initArchivio();
+  if ( $("div.news-dettaglio").length>0 ) {
+    $.getJSON('/news', function(data) {
+      var archivio = new Archivio(data);
+      archivio.init();
+    });
+//    displayContent('archivio');
   }
+
   // init Map
   var map = L.mapbox.map('map', 'brontoluke.hnlbg8n2')
     .setView([43.879, 11.096], 14);
@@ -141,4 +146,46 @@ function initArchivio() {
       });
     })
   });
+}
+
+// archivio news
+function Archivio(news) {
+  // news = [{news_1},{news_2},..]
+  this.news = news;
+  this.init = function() {
+    this.displayIndex();
+    var firstItem = $('ul.news-index>li')[0];
+    $(firstItem).find('a').addClass('active');
+    this.displayContent(this.news[0]);    
+  }
+  this.displayCategories = function() {};
+  this.displayIndex = function() {
+    var template = _.template( $('#tpl-news-index').html() );
+    var cnt = template({news: this.news});
+    $('ul.news-index').append(cnt);
+    var self = this;
+    $('ul.news-index>li a.news-index').each(function(i,item){
+      $(this).on('click', function(e) {
+        e.preventDefault();
+        source = $('div.news-dettaglio').attr('id');
+        target = $(e.target).attr('data-target');
+        if ( source !== target ) {
+          $('a[data-target="'+source+'"]').removeClass('active');
+          $(e.target).addClass('active');
+          var model = {};
+          _.each(self.news, function(item) { 
+            if ( item.id==target ) { 
+              model = item;
+            }
+          })
+          self.displayContent(model);
+        }
+      });
+    });
+  };
+  this.displayContent = function(model) {
+    var template = _.template( $('#tpl-news-dettaglio').html() );
+    var cnt = template({model: model});
+    $('div.news-dettaglio').attr("id",model.id).empty().append(cnt);
+  };  
 }

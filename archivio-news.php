@@ -18,26 +18,25 @@
   </header>
   <!-- /header -->
   <!-- content -->
-  <section id="content">
+  <section id="content" class="archivio-news">
     <div class="container">
       <div class="row content">
         <!-- sidebar -->
         <div class="col-md-3 sidebar">
-          <ul id="menu-archivio">
-            <li>
-              <a class="sidebar archivio activeLink" data-target="main">
-                Archivio News e Eventi
-              </a>
-            </li>
-          </ul>
+          <div class="news-categories">
+            <!-- #tpl-news-categories -->
+          </div>
+          <div class="news-index">
+            <ul class="news-index">
+              <!-- #tpl-news-index -->
+            </ul>
+          </div>
         </div>
         <!-- /sidebar -->
         <!-- content secondary pages -->
         <div class="col-md-9 secondary">
-          <div id="archivio-wrapper">
-            <div id="main" class="archivio active">
-              <ul id="archivio-list"></ul>
-            </div>
+          <div class="news-dettaglio">
+            <!-- #tpl-archivio-news -->
           </div>
         </div>
         <!-- /content secondary pages -->

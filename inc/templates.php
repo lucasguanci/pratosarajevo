@@ -44,9 +44,28 @@
   </div>
 </script>
 <!-- archivio template -->
-<script type="text/template" id="tpl-archivio">
-  <li class="archivio">
-    <span class="data"><%=data.data%></span><br>
-    <a class="archivio" href="#"><%= data.titolo%></a>
+<script type="text/template" id="tpl-news-categories"></script>
+<script type="text/template" id="tpl-news-index">
+  <% _.each(news, function(item) { %>
+    <li>
+      <a class="sidebar news-index" data-target="<%=item.id%>">
+        <%= item.titolo %>
+      </a>
+    </li>
+  <% }) %>
+</script>
+<script type="text/template" id="tpl-news-dettaglio">
+  <div id="<%= model.id %>" class="news-dettaglio">
+    <h2><%= model.titolo %></h2>
+    <p class="data_pubblicazione"><%= model.data_pubblicazione %></p>
+    <p class="categoria"><%= model.categoria %></p>
+    <img src="<%=model.immagine%>">
+    <p class="content">
+      <% if ( typeof(model.contenuto_esteso)!=="undefined" ) { %>
+        <%= model.contenuto_esteso %>
+      <% } else { %> 
+        <%= model.contenuto %>
+      <% } %>
+    </p>
   </div>
 </script>
