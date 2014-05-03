@@ -50,7 +50,12 @@ var app = app || {};
         // display form
         subview = new app.addEditView();
         data = undefined;
-        self.$el.find('div.cnt[data-model="new"]').html(subview.render(ctype, data));        
+        self.$el.find('div.cnt[data-model="new"]').html(subview.render(ctype, data));
+        // enable CKeditor
+        self.$el.find('textarea').each(function(i,item) {
+          var id = $(this).attr('name');
+          CKEDITOR.replace(id);
+        });
       } else {
         // UPDATE
         // hide active element and display selected
@@ -68,6 +73,11 @@ var app = app || {};
           .done(function(data) {
             subview = new app.addEditView();
             self.$el.find('div.cnt[data-model="'+model+'"]').empty().append(subview.render(ctype, data));
+            // enable CKeditor
+            self.$el.find('textarea').each(function(i,item) {
+              var id = $(this).attr('name');
+              CKEDITOR.replace(id);
+            });
           });
       }
     },

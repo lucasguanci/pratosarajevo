@@ -61,8 +61,8 @@
     <h2><%= model.titolo %></h2>        
     <img src="<%=model.immagine%>">
     <p class="content">
-      <% if ( typeof(model.contenuto_esteso)!=="undefined" ) { %>
-        <%= model.contenuto_esteso %>
+      <% if ( typeof(model.testo_esteso)!=="undefined" && model.testo_esteso!="") { %>
+        <%= model.testo_esteso %>
       <% } else { %> 
         <%= model.contenuto %>
       <% } %>

@@ -221,6 +221,10 @@ function mysqlConnect() {
   $dbuser="root";
   $dbpass="coyote";
   $dbname="ps";
+  // $dbhost="62.149.150.136";
+  // $dbuser="Sql476706";
+  // $dbpass="1936974d";
+  // $dbname="Sql476706_3";
   $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   return $dbh;
