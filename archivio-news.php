@@ -27,6 +27,7 @@
             <!-- #tpl-news-categories -->
           </div>
           <div class="news-index">
+            <p class="news-index">Archivio news</p>
             <ul class="news-index">
               <!-- #tpl-news-index -->
             </ul>

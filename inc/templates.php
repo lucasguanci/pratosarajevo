@@ -28,13 +28,13 @@
 <script type="text/template" id="tpl-news-home">
   <div id="<%= data.id %>" class="col-md-3 news">
     <h2><%= data.categoria %></h2>
-    <% if ( data.target!=null ) { %>
+    <% if ( data.target!="" ) { %>
       <a href="<%= data.target %>"><img src="<%= data.immagine %>" /></a>
     <% } else { %>
       <img src="<%= data.immagine %>" />
     <% } %>
     <p class="titolo">
-      <% if ( data.target!=null ) { %>
+      <% if ( data.target!="" ) { %>
         <a href="<%= data.target %>"><%= data.titolo %></a>
       <% } else { %>
         <%= data.titolo %>
@@ -48,6 +48,7 @@
 <script type="text/template" id="tpl-news-index">
   <% _.each(news, function(item) { %>
     <li>
+      <p class="data_pubblicazione"><%= item.data_pubblicazione %></p>
       <a class="sidebar news-index" data-target="<%=item.id%>">
         <%= item.titolo %>
       </a>
@@ -56,9 +57,8 @@
 </script>
 <script type="text/template" id="tpl-news-dettaglio">
   <div id="<%= model.id %>" class="news-dettaglio">
-    <h2><%= model.titolo %></h2>
     <p class="data_pubblicazione"><%= model.data_pubblicazione %></p>
-    <p class="categoria"><%= model.categoria %></p>
+    <h2><%= model.titolo %></h2>        
     <img src="<%=model.immagine%>">
     <p class="content">
       <% if ( typeof(model.contenuto_esteso)!=="undefined" ) { %>
@@ -67,5 +67,6 @@
         <%= model.contenuto %>
       <% } %>
     </p>
+    <p class="categoria">categoria: <%= model.categoria %></p>
   </div>
 </script>
