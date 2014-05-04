@@ -60,8 +60,71 @@
     <div class="container wrapper">
       <div class="row footer-nav">
         <div class="col-md-12 footer">
-          <strong>Prato-Sarajevo art invasion</strong><br>
-          <a href="mailto:info@prato-sarajevo.net">info@prato-sarajevo.net</a>
+          <strong>Prato-Sarajevo ART INVASION</strong><br>
+          Progetto di residenza per giovani artisti residenti in Toscana e Bosnia - Prato / aprile - giugno 2014<br>
+          <a class="link" href="mailto:info@prato-sarajevo.net">info@prato-sarajevo.net</a>
+        </div>
+      </div>
+      <div class="row hr">
+        <div class="col-md-4 footer contatti">
+          <p>
+            <strong>Ufficio stampa</strong><br>
+            Ivan Aiazzi<br>
+            tel. 0574-531828<br>
+            <a class="link" href="mailto:i.aiazzi@centropecci.it">i.aiazzi@centropecci.it</a>
+          </p>
+        </div>
+        <div class="col-md-4 footer contatti">
+          <p>   
+            <br>       
+            Serena Becagli<br>
+            tel. 339-8754106<br>
+            <a class="link" href="mailto:press@prato-sarajevo.net">press@prato-sarajevo.net</a>
+          </p>
+        </div>
+        <div class="col-md-4 footer contatti">
+          <p>   
+            <br>                   
+            Caterina Fanfani<br>
+            tel. 0574-53573<br>
+            <a class="link" href="mailto:ufficiostampa@provincia.prato.it">ufficiostampa@provincia.prato.it</a>
+          </p>
+        </div>
+      </div>
+      <div class="row hr">
+        <div class="col-md-4 footer colophon">
+          <p>
+            Nell'ambito di<br>
+            <strong>TOSCANAINCONTEMPORANEA 2013</strong> 
+          </p>
+          <p>
+            Ente Promotore<br>
+            <strong>REGIONE TOSCANA</strong><br>
+            <strong>PROVINCIA DI PRATO</strong>
+          </p>
+        </div>
+        <div class="col-md-4 footer colophon">
+          <p>
+            Realizzazione e cura<br>
+            <strong>CENTRO PER L'ARTE CONTEMPORANEA LUIGI PECCI</strong>
+          </p>
+          <p>
+            con<br>
+            <strong>DRYPHOTO ARTE CONTEMPORANEA</a></strong>
+            <strong>KINKALERI</strong>
+          </p>
+        </div>
+        <div class="col-md-4 footer colophon">
+          <p>
+            In collaborazione con<br>
+            <strong>COMUNE DI PRATO</strong><br>
+            <strong>COMUNE DI CARMIGNANO</strong><br>
+            <strong>SPAZIO D'ARTE ALBERTO MORETTI</strong>
+          </p>
+          <p>
+            In collegamento con<br>
+            <strong>ARS AEVI - MUSEO D'ARTE CONTEMPORANEA, SARAJEVO</strong>
+          </p>
         </div>
       </div>
     </div>

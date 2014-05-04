@@ -9,6 +9,8 @@
 @gray-magenta: rgb(92,65,74); //rgb(130,115,120);
 @black-footer: rgb(33,33,33);
 @black: rgb(51,51,51);
+@white-footer: rgb(200,200,200);
+@white-strong-footer: rgb(220,220,220);
 
 /**
  * Fonts
@@ -348,6 +350,10 @@ section#content {
     }
   }
 }
+/* index */
+section#content.index {
+  min-height: 25em;
+}
 /* archivio news */
 section#content.archivio-news {
   p.news-index {
@@ -378,8 +384,9 @@ section#content.archivio-news {
 **/
 section#ps {
   background-color: @gray;
-  padding: 1em 0 1.5em 0;
+  padding: 2em 0 2.5em 0;
   h2 {
+    font-size: 110%;
     color: white;
     margin: 0.5em 0 0.5em 0;
     a {
@@ -391,7 +398,7 @@ section#ps {
     width: 300px;
     height: 169px;
     background-color: @black-footer;
-    font-size: 90%;
+    font-size: 100%;
     img {
       margin: 15px 0;
     }
@@ -441,12 +448,34 @@ section#ps {
  * Footer
 **/
 footer#footer {
+  .shadow;
   font-size: 90%;
   background-color: @black-footer;
-  padding: 1em 0;
-  color: white;
-  a {
+  padding: 2em 0;
+  color: @white-footer;
+  a.link {
+    color: @white-strong-footer;
+    text-decoration: none;
+    border-bottom: none;  
+    &:hover {
+      border-bottom: 1px dotted;
+    };
+  }
+  strong {
     color: white;
+  }
+  div.contatti,
+  div.colophon {
+    margin-top: 1em;
+    font-size: 95%;
+    line-height: 130%;
+    p {
+      margin-top: 0.5em;
+    }
+  }
+  div.hr {
+    border-top: 1px @gray dotted;
+    margin-top: 1em;
   }
 }
 

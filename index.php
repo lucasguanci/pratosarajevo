@@ -19,7 +19,7 @@
   </header>
   <!-- /header -->
   <!-- content -->
-  <section id="content">
+  <section id="content" class="index">
     <div class="container">
       <div id="news-wrapper" class="row content">
         <!-- news -->
