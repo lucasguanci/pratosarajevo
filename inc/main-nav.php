@@ -41,7 +41,9 @@
                 <span class="menu-item">
                   <a href="progetto.php">Progetto</a>
                 </span>
-                <span class="menu-item">Programma</span>
+                <span class="menu-item">
+                  <a href="prato-sarajevo-art-invasion-programma.php">Programma</a>
+                </span>
                 <span class="menu-item">
                   <a href="artisti.php">Artisti</a>
                 </span>

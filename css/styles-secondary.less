@@ -80,6 +80,38 @@ section#content {
         margin-bottom: 2em;
       }
     }
+    div.programma {
+      h2 {
+        margin-bottom: 0;
+      }
+      p.subtitle {
+        margin-top: 0;
+        color: @magenta;
+      }
+      div.evento {
+        margin-top: 1em;
+        padding-top: 1em;
+        border-top: dotted 1px @gray-medium;
+        &.first {
+          border-top: none;
+        }
+        h3 {
+          color: @magenta;
+          margin-bottom: 0.5em;
+        }
+        p.indirizzo,
+        p.dove-quando {
+          margin: 0;
+          font-size: 90%;
+        }
+        p.dove-quando {
+          font-weight: bold;
+        }
+        p.indirizzo {
+          line-height: 0.9em;
+        }
+      }
+    }
   }
 }
 div#to-top {
