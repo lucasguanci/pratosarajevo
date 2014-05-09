@@ -29,9 +29,7 @@ artisti invitati<br>
 <strong>Francesca Banchelli, Lana Cmajčanin, Gaetano Cunsolo, Emma Grosbois, Lori Lako, Valentina Lapolla, Giacomo Laser e Giulia del Piero, Olga Pavlenko, Bojan Stojčić, Virginia Zanetti</strong><br>
 <hr>
 <br>
-<strong>Giovedì 10 aprile alle 18.00 nell’auditorium del Centro per l'arte contemporanea Luigi Pecci di Prato</strong> avrà luogo il primo appuntamento di <strong>Prato-Sarajevo ART INVASION</strong>, progetto di residenza per giovani artisti attivi in Toscana e Bosnia, nell'ambito di TOSCANAINCONTEMPORANEA 2013, promosso da REGIONE TOSCANA e PROVINCIA DI PRATO. Gli artisti sono invitati a intervenire fra <strong>aprile e giugno 2014</strong> a Prato con un’invasione, incursione e penetrazione dell'arte nella città e nei suoi luoghi di diffusione. Il progetto è a cura del Centro  Pecci con le associazioni Dryphoto arte contemporanea e Kinkaleri, in collaborazione con Comune di Prato, Comune di Carmignano, Spazio d'arte Alberto Moretti e in collegamento con ARS AEVI - Museo d'arte contemporanea di Sarajevo. 
-<br><br>
-Il primo degli  appuntamenti in programma fino a giugno si svolge alla presenza del presidente della <strong>Provincia di Prato Lamberto Gestri</strong> e dei curatori del progetto, con la presentazione dei giovani artisti invitati e l'<strong>anteprima assoluta</strong> del film <strong>SARAJEVOLUTION</strong> (2014) insieme al regista <strong>Rocco Riccio</strong> e all’autore <strong>Marco Rubichi</strong>. Il documentario sulla Sarajevo di oggi e sulla sua vita culturale a quasi vent'anni dalla fine del conflitto nella ex Jugoslavia (1991-1995) prosegue idealmente il percorso a carattere storico organizzato dalla Provincia di Prato in collaborazione con l’istituto Gramsci Toscano Onlus dal titolo <em>De bello balcanico. Dalla grande guerra ai conflitti nella ex Jugoslavia degli anni 90: una storia lunga un secolo</em>.
+<strong>Prato-Sarajevo ART INVASION</strong> è un progetto di residenza per giovani artisti attivi in Toscana e Bosnia, nell'ambito di TOSCANAINCONTEMPORANEA 2013, promosso da REGIONE TOSCANA e PROVINCIA DI PRATO. Gli artisti sono invitati a intervenire fra <strong>aprile e giugno 2014</strong> a Prato con un’invasione, incursione e penetrazione dell'arte nella città e nei suoi luoghi di diffusione. Il progetto è a cura del Centro  Pecci con le associazioni Dryphoto arte contemporanea e Kinkaleri, in collaborazione con Comune di Prato, Comune di Carmignano, Spazio d'arte Alberto Moretti e in collegamento con ARS AEVI - Museo d'arte contemporanea di Sarajevo. 
 <br><br>
 <strong>Prato-Sarajevo ART INVASION</strong> si offre come occasione per stimolare una riflessione su quale sia oggi la relazione fra l'arte contemporanea e territorio di riferimento. Lo scopo del progetto è di allargare la presenza e l'incidenza artistica nel tessuto urbano, promuovere riflessioni e suscitare dibattiti in città e sulla città attraverso le idee e i linguaggi dell'arte. <br>
 Il metodo scelto si concentra sull’attivazione di un processo di scambio culturale e alla creazione di un <em>network</em> fra artisti, operatori culturali e cittadini, piuttosto che alla semplice produzione di opere, favorito dall’innesco di relazioni fra la comunità locale e gli artisti ospitati. Si immagina la città come un luogo di discussione che, a partire da pratiche e da esperienze condivise, porti a sperimentare un modello per la crescita culturale e produttiva e coniughi il pensiero progettuale degli artisti alla valenza pubblica del loro operare.
@@ -41,18 +39,9 @@ Sullo sfondo scorrono in parallero due storie distinte, quelle di <strong>Prato 
 Le due istituzioni d'arte hanno l'ambizione di rappresentare, riflettere e interpretare le rispettive realtà: da una parte quella pratese, tradizionalmente votata alla produzione industriale, da decenni interessata alla ricerca e produzione contemporanea, artistica e culturale, impegnata nel passaggio epocale da una società industriale a una postindustriale; dall'altra quella bosniaca, in fase di avanzata ricostruzione sociale post-bellica, nel tentativo di una ripresa economica ma soprattutto della trasformazione politica in una società democratica. In tali contesti paralleli, seppure distinti, l'arte contemporanea e il suo museo/laboratorio sono stati individuati come comune denominatore culturale fra le due aree urbane di Prato e Sarajevo. 
 <br><br>
 <strong>Prato-Sarajevo ha come slogan ART INVASION</strong>, un'invasione di idee che nel progetto assume il carattere positivo dell'assalto, dell'attacco a pregiudizi, luoghi comuni, divisioni etniche e sociali, proponendo nuovi canali di immaginazione, comunicazione, confronto e dialogo.
-I prossimi appuntamenti in programma per avvicinare progressivamente spazi, soggetti, temi partiranno dai luoghi di diffusione dell’arte contemporanea (<strong>spazioK 7 maggio; Spazio d’arte Alberto Moretti 15 maggio; Dryphoto arte contemporanea 19 maggio</strong>) per poi riversarsi nello spazio pubblico dal <strong>3 al 12 giugno</strong>.
+I prossimi appuntamenti in programma per avvicinare progressivamente spazi, soggetti, temi partiranno dai luoghi di diffusione dell’arte contemporanea (<strong>spazioK 7 maggio; Spazio d’arte Alberto Moretti 15 maggio; Dryphoto arte contemporanea 19 maggio, Giardino Banci Buonamici 5 giugno</strong>) per poi riversarsi nello spazio pubblico dal <strong>3 al 12 giugno</strong>.
 <br><br>
 L’ingresso alle iniziative di Prato-Sarajevo ARTINVASION è <strong>gratuito</strong>.<br>
-<br>
-<hr>
-<br>
-<strong>Prato-Sarajevo ART INVASION > Presentazione del progetto</strong><br>
-<strong>Giovedì 10 aprile 2014, ore 18</strong><br>
-Auditorium del Centro Pecci viale della Repubblica 277, Prato (ingresso dall’anfiteatro)<br>
-<br><br>
-<strong>Prima assoluta</strong><br>
-<strong>Sarajevolution</strong> di Rocco Riccio (Italia, Bosnia, 2014, 87min)<br>
 <br>
 <hr>
 <br>

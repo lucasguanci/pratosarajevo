@@ -18,6 +18,16 @@ $.ajax({
   }
 });
 
+$.post('/artists', JSON.stringify(data), function(data,textStatus,jqXHR) {
+    console.log( 'POST response:' );
+    console.dir( data );
+    console.log( textStatus );
+    console.dir( jqXHR );
+  }
+);
+
+
 curl -i -X PUT -H 'Content-Type: application/json' -d '{"username": "banchelli", "nome": "Francesca Banchelli", "immagini": ["img-1", "img-2", "img-3"], "didascalie": ["didascalia-1", "didascalia-2", "didascalia-3"], "bio": "biografia banchelli"}' http://ps.local/api.php/artists/banchelli
 
 
+curl -i -X POST -H 'Content-Type: application/json' -d '{"username": "banchelli", "nome": "Francesca Banchelli", "immagini": ["img-1", "img-2", "img-3"], "didascalie": ["didascalia-1", "didascalia-2", "didascalia-3"], "bio": "biografia banchelli"}' http://ps-mysql.local/artists

@@ -124,10 +124,10 @@
       <input type="text" class="form-control" name="titolo" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.titolo) !== "undefined" ) { %> value="<%= model.titolo %>" <% } %> />
       <!-- contenuto -->
       <label for="contenuto">contenuto</label>
-      <textarea class="form-control" name="contenuto" id="contenuto" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.contenuto) !== "undefined" ) { %><%=model.contenuto%> <% } %></textarea>
+      <textarea class="form-control" name="contenuto_<%=ctype%>" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.contenuto) !== "undefined" ) { %><%=model.contenuto%> <% } %></textarea>
       <!-- testo_esteso -->
       <label for="testo_esteso">testo_esteso</label>
-      <textarea class="form-control" name="testo_esteso" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.testo_esteso) !== "undefined" ) { %><%=model.testo_esteso%> <% } %></textarea>
+      <textarea class="form-control" name="testo_esteso_<%=ctype%>" rows="10"><% if ( typeof(model)!=="undefined" && typeof(model.testo_esteso) !== "undefined" ) { %><%=model.testo_esteso%> <% } %></textarea>
       <!-- immagine -->
       <label for="immagine">immagine</label>
       <input type="text" class="form-control" name="immagine" placeholder="" <% if ( typeof(model)!=="undefined" && typeof(model.immagine) !== "undefined" ) { %> value="<%= model.immagine %>" <% } %> />

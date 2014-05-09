@@ -15,5 +15,11 @@
         <div class="item">
           <img src="images/img-banner-presentazione-progetto-prato-sarajevo.jpg" alt="Prato-Sarajevo art invasion - meeting#1"/>
         </div>
+        <div class="item">
+          <img src="images/img-banner-tappa-avvicinamento-1-progetto-prato-sarajevo-01.jpg" alt="Prato-Sarajevo art invasion - #1 tappa di avvicinamento, 7 maggio, spazioK"/>
+        </div>
+        <div class="item">
+          <img src="images/img-banner-tappa-avvicinamento-1-progetto-prato-sarajevo-02.jpg" alt="Prato-Sarajevo art invasion - #1 tappa di avvicinamento, 7 maggio, spazioK"/>
+        </div>
       </div>
     </div>

@@ -115,7 +115,7 @@ function displayNews() {
   $.getJSON('/news', function(data) {
     newsInEvidenza = [];
     _.each(data, function(model) {
-      if ( model.in_evidenza ) {
+      if ( parseInt(model.in_evidenza) ) {
         newsInEvidenza.push(model.id);
       }
     });

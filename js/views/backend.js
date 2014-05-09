@@ -50,7 +50,7 @@ var app = app || {};
         // display form
         subview = new app.addEditView();
         data = undefined;
-        self.$el.find('div.cnt[data-model="new"]').html(subview.render(ctype, data));
+        self.$el.find('div.cnt.'+ctype+'[data-model="new"]').html(subview.render(ctype, data));
         // enable CKeditor
         self.$el.find('textarea').each(function(i,item) {
           var id = $(this).attr('name');
@@ -109,7 +109,12 @@ var app = app || {};
           data.testo_esteso = $(e.target).find('textarea[name="testo_esteso"]').val();
           data.immagine = $(e.target).find('input[name="immagine"]').val();
           data.target = $(e.target).find('input[name="target"]').val();
-          data.in_evidenza = $(e.target).find('input[name="in_evidenza"]').is(":checked");
+          var in_evidenza = $(e.target).find('input[name="in_evidenza"]').is(":checked");
+          if ( in_evidenza ) {
+            data.in_evidenza = 1;
+          } else {
+            data.in_evidenza = 0;
+          }
           data.categoria = $(e.target).find("select[name='categoria']").find('option:selected').text();
           break;
       }

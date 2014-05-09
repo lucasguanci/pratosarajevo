@@ -50,7 +50,7 @@
                 </p> 
                 <p class="cnt">
                   Gli artisti Gaetano Cunsolo, Valentina Lapolla, Giacomo Laser e Giulia del Piero dialogano con il rapper Blebla e il giornalista Giorgio Bernardini in un incontro coordinato da Alessio Bertini.<br>
-                  Ingresso libero.
+                  Ingresso libero.                  
                 </p>
               </div>
               <div class="evento">

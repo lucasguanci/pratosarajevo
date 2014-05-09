@@ -151,7 +151,7 @@ function getPost($id) {
 function addPost() {
   $request = Slim\Slim::getInstance()->request();
   $post = json_decode($request->getBody());
-  $sql = "INSERT INTO news (data, data_pubblicazione, titolo, contenuto, immagine) VALUES (:data, :data_pubblicazione, :titolo, :contenuto, :immagine, :target, :testo_esteso, :in_evidenza, :categoria)";
+  $sql = "INSERT INTO news (data, data_pubblicazione, titolo, contenuto, immagine, target, testo_esteso, in_evidenza, categoria) VALUES (:data, :data_pubblicazione, :titolo, :contenuto, :immagine, :target, :testo_esteso, :in_evidenza, :categoria)";
   try {
     $db = mysqlConnect();
     $query = $db->prepare($sql);
