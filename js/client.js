@@ -71,32 +71,32 @@ $(document).ready(function(){
 
   // init Map
   var map = L.mapbox.map('map', 'brontoluke.hnlbg8n2')
-    .setView([43.879, 11.096], 14);
+    .setView([43.879, 11.096], 13);
   // Spreaker API
-  $.get('http://api.spreaker.com/user/7225701/episodes', function(data) {
-    var results = data.response.pager.results;
-    var IS_LIVE = 0;
-    var live = "";
-    var podcast = [];
-    results.forEach(function(e) {
-      if ( e.type == "LIVE" ) {
-        live = e.episode_id;
-        IS_LIVE = 1;
-      } else {
-        podcast.push(e.episodes_id);
-      }
-    });
-    if ( IS_LIVE ) {
-      var play_url = "http://api.spreaker.com/episode/"+live;
-      $('div.spreaker').find('ul.podcast-list').hide();
-      $('div.spreaker').find('div.live').html("live now");
-      SP.Player.play(play_url);
-    } else {
-      $('div.spreaker').find('div.live').empty().hide();
-      $('div.spreaker').find('ul.podcast-list').show();
-      // list episodes
-    }
-  });
+  // $.get('http://api.spreaker.com/user/7225701/episodes', function(data) {
+  //   var results = data.response.pager.results;
+  //   var IS_LIVE = 0;
+  //   var live = "";
+  //   var podcast = [];
+  //   results.forEach(function(e) {
+  //     if ( e.type == "LIVE" ) {
+  //       live = e.episode_id;
+  //       IS_LIVE = 1;
+  //     } else {
+  //       podcast.push(e.episodes_id);
+  //     }
+  //   });
+  //   if ( IS_LIVE ) {
+  //     var play_url = "http://api.spreaker.com/episode/"+live;
+  //     $('div.spreaker').find('ul.podcast-list').hide();
+  //     $('div.spreaker').find('div.live').html("live now");
+  //     SP.Player.play(play_url);
+  //   } else {
+  //     $('div.spreaker').find('div.live').empty().hide();
+  //     $('div.spreaker').find('ul.podcast-list').show();
+  //     // list episodes
+  //   }
+  // });
 });
 
 function getArtist(artist) {

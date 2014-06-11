@@ -148,7 +148,7 @@
   <!-- PS -->
   <script src="js/lib/moment.js"></script>
   <script src="js/lib/lang/it.js"></script>
-  <script type="text/javascript" src="http://static.spreaker.net/js/sdk_client.js"></script>
+  <!--<script type="text/javascript" src="http://static.spreaker.net/js/sdk_client.js"></script>-->
   <script src="js/client.js"></script>
 </body>
 </html>

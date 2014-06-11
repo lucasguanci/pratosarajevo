@@ -22,6 +22,9 @@
     <p>
       <%= data.bio %>
     </p>
+    <p>
+      <i class="fa fa-volume-up"></i> <a href="spreaker.php">ascolta l intervista a <%= data.nome %></a>
+    </p>
   </div>
 </script>
 <!-- news template -->
